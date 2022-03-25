@@ -5,18 +5,20 @@
  */
 package Akinator;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sebas
  */
 public class VentanaCSV extends javax.swing.JFrame {
-
+public static HashTable hash_table;
     /**
      * Creates new form VentanaCSV
      */
-    public VentanaCSV() {
+    public VentanaCSV(HashTable hash_table) {
         initComponents();
-        
+        this.hash_table= hash_table;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
@@ -38,7 +40,7 @@ public class VentanaCSV extends javax.swing.JFrame {
         exitButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Consultar_animal = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextArea1 = new javax.swing.JTextArea();
@@ -77,8 +79,13 @@ public class VentanaCSV extends javax.swing.JFrame {
         jButton2.setText("Inicializar ");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 220, -1));
 
-        jButton3.setText("Consultar Animal");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 220, 30));
+        Consultar_animal.setText("Consultar Animal");
+        Consultar_animal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consultar_animalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Consultar_animal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 220, 30));
 
         jButton4.setText("Guardar ");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 30));
@@ -105,6 +112,24 @@ public class VentanaCSV extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void Consultar_animalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consultar_animalActionPerformed
+        // TODO add your handling code here:
+        String cadena= JOptionPane.showInputDialog("Ingrese el nombre del animal a buscar: ");
+        boolean es_numero= cadena.matches("[+-]?\\d*(\\.\\d+)?");
+        if (es_numero || cadena.isBlank() || cadena.isEmpty() || cadena==null) {
+            pantalla.setText("La cadena no puede ser numérica o estar vacía");
+            return;
+        }
+        Nodo buscado= hash_table.buscar(cadena);
+        if (buscado==null) {
+            pantalla.setText("El animal no se encuentra registado");
+            return;
+        }
+        
+        
+        pantalla.setText("El animal buscado es: " + buscado.getInfo());
+    }//GEN-LAST:event_Consultar_animalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,17 +161,17 @@ public class VentanaCSV extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaCSV().setVisible(true);
+                new VentanaCSV(hash_table).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Consultar_animal;
     private javax.swing.JButton backButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;

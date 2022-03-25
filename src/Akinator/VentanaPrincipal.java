@@ -10,12 +10,18 @@ package Akinator;
  * @author sebas
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
     /**
      * Creates new form VentanaPrincipal
      */
+    public static BinaryTree arb;
+    public static archivoCsv csv;
+    public static HashTable hash_table;
     public VentanaPrincipal() {
         initComponents();
+        this.csv = new archivoCsv();
+        this.arb = new BinaryTree();
+        this.hash_table= new HashTable(10111);
+        String archivo_csv= csv.abrirArchivo(arb, hash_table);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -83,12 +89,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         this.dispose();
-        VentanaAkinator ventanaAkinator = new VentanaAkinator();
+        VentanaAkinator ventanaAkinator = new VentanaAkinator(arb, hash_table);
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void dataBaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBaseButtonActionPerformed
         this.dispose();
-        VentanaCSV ventanaCSV = new VentanaCSV();
+        VentanaCSV ventanaCSV = new VentanaCSV(hash_table);
     }//GEN-LAST:event_dataBaseButtonActionPerformed
 
     /**
