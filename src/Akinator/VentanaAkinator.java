@@ -13,20 +13,22 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
-
+    ArchivoCSV csv = new ArchivoCSV();
     BinaryTree arb = new BinaryTree();
+    Node nodo = null;
+    boolean hoja = false;
     boolean si = false;
     boolean no = true;
     
     public VentanaAkinator() {
         initComponents();
-        
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        
-        ArchivoCSV csv = new ArchivoCSV();
         csv.abrirArchivo(arb);
         arb.PreOrder(arb.root);
+        nodo = arb.root;
+        yesButton.setEnabled(false);
+        noButton.setEnabled(false);
     }
 
     /**
@@ -41,7 +43,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         yesButton = new javax.swing.JButton();
         noButton = new javax.swing.JButton();
-        startButton = new javax.swing.JButton();
+        comenzar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         preguntas = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
@@ -69,13 +71,13 @@ public class VentanaAkinator extends javax.swing.JFrame {
         });
         jPanel1.add(noButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 170, 60));
 
-        startButton.setText("Comenzar Ronda");
-        startButton.addActionListener(new java.awt.event.ActionListener() {
+        comenzar.setText("Comenzar Ronda");
+        comenzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startButtonActionPerformed(evt);
+                comenzarActionPerformed(evt);
             }
         });
-        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 260, -1));
+        jPanel1.add(comenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 260, -1));
 
         preguntas.setColumns(20);
         preguntas.setRows(5);
@@ -107,32 +109,57 @@ public class VentanaAkinator extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+    private void comenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarActionPerformed
         if (!arb.its_empty(arb.getRoot())) {
             preguntas.append("¿Estás listo para jugar una ronda?"+"\n");
             int respuesta1 = JOptionPane.showConfirmDialog(null, "Estas listo?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
             if (respuesta1 == 0) {
-            boolean hoja = false;
-            Node nodo = arb.root;
-            while (hoja != true) {                
                 preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
-                 int respuesta2 = JOptionPane.showConfirmDialog(null,"Tu animal "+nodo.get_info()+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
-                if (respuesta2==0) {
-                    nodo = nodo.Right_child(); 
-                    if (nodo.Right_child()==null | nodo.Left_child()==null) {
-                        hoja = true;
-                    }
-                }else{
-                    nodo = nodo.Left_child();
-                    if (nodo.Right_child()==null | nodo.Left_child()==null) {
-                        hoja = true;
-                    }
-                }   
+                yesButton.setEnabled(true);
+                noButton.setEnabled(true);
+                comenzar.setEnabled(false);
+
+        }else{
+                preguntas.append("Nos vemos para el proximo desafio, Adios!!!!");
             }
-            preguntas.append("Tu animal es un : "+nodo.get_info()+"?"+"\n");
-            int respuesta2 = JOptionPane.showConfirmDialog(null, "Tu animal es un : "+nodo.get_info()+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
-                if (respuesta2==1) {
-                    preguntas.append("Cual era tu animal?"+"\n");
+        }
+    }//GEN-LAST:event_comenzarActionPerformed
+
+    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
+            if (hoja != true) {                
+                nodo = nodo.Right_child(); 
+                if (nodo.Right_child()==null | nodo.Left_child()==null) {
+                    hoja = true;
+                    preguntas.append("Tu animal es un : "+nodo.get_info()+"?"+"\n");
+                }
+                if (hoja!=true) {
+                    preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
+                }
+                
+            }else{
+               preguntas.append("¡Qué fácil!, ponlo más difícil la próxima vez"+"\n");
+               yesButton.setEnabled(false);
+                noButton.setEnabled(false);
+                comenzar.setEnabled(true);
+                nodo = arb.root;
+                hoja = false;
+                    }
+            
+    }//GEN-LAST:event_yesButtonActionPerformed
+
+    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
+        if (hoja != true) {                
+                nodo = nodo.Left_child(); 
+                if (nodo.Right_child()==null | nodo.Left_child()==null) {
+                    hoja = true;
+                     preguntas.append("Tu animal es un : "+nodo.get_info()+"?"+"\n");
+                }
+                if (hoja!=true) {
+                    preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
+                }
+                
+            }else{
+             preguntas.append("Cual era tu animal?"+"\n");
                     String animal = JOptionPane.showInputDialog("Indica tu animal: ");
                     preguntas.append("¿Qué diferencia a un "+animal+ " de un "+nodo.get_info()+"?"+"\n");
                     String diferencia = JOptionPane.showInputDialog("Que los diferencia?: ");
@@ -145,6 +172,11 @@ public class VentanaAkinator extends javax.swing.JFrame {
                         nodo.Set_Right_child(animalnuevo);
                         nodo.Set_Left_child(animalviejo); 
                         preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                        yesButton.setEnabled(false);
+                        noButton.setEnabled(false);
+                        comenzar.setEnabled(true);
+                        nodo = arb.root;
+                        hoja = false;
                     }else{
                         Node animalviejo = new Node(nodo.get_info());
                         Node animalnuevo = new Node(animal);
@@ -152,23 +184,13 @@ public class VentanaAkinator extends javax.swing.JFrame {
                         nodo.Set_Left_child(animalnuevo);
                         nodo.Set_Right_child(animalviejo); 
                         preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
-                    }
-                }else{
-                    preguntas.append("¡Qué fácil!, ponlo más difícil la próxima vez"+"\n");
-                    
-                }
-        }else{
-                preguntas.append("Gracias por jugar!"+"\n"+"Nos vemos para el siguiente desafio :)"+"\n"+"Adios!!!!!"+"\n");
-            }
+                        yesButton.setEnabled(false);
+                        noButton.setEnabled(false);
+                        comenzar.setEnabled(true);
+                        nodo = arb.root;
+                        hoja = false;
         }
-    }//GEN-LAST:event_startButtonActionPerformed
-
-    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
-        si = true;
-    }//GEN-LAST:event_yesButtonActionPerformed
-
-    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
-        no = true;
+        }
     }//GEN-LAST:event_noButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -218,13 +240,13 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton comenzar;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noButton;
     private javax.swing.JTextArea preguntas;
-    private javax.swing.JButton startButton;
     private javax.swing.JButton yesButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,7 +19,6 @@ import javax.swing.JTextArea;
  * @author gabriel
  */
 public class ArchivoCSV {
-
      public String abrirArchivo(BinaryTree arb){
         String aux="";   
         String texto="";
@@ -47,7 +46,6 @@ public class ArchivoCSV {
                 for (int i = 1; i < txt_split.length; i++) {
                     if (txt_split[0].contains(";")) {
                     String[] datos = txt_split[i].split(";");
-                    System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
