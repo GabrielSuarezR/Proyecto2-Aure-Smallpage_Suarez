@@ -16,10 +16,11 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author gabriel
+ * @author johnd
  */
-public class ArchivoCSV {
-     public String abrirArchivo(BinaryTree arb){
+
+public class Archivocsv {
+    public String abrirArchivo(BinaryTree arb){
         String aux="";   
         String texto="";
         try
@@ -43,9 +44,17 @@ public class ArchivoCSV {
             if (!"".equals(texto) && !texto.isEmpty()){
 
                 String[] txt_split= texto.split("\n");
+                char espacio=' ';
                 for (int i = 1; i < txt_split.length; i++) {
                     if (txt_split[0].contains(";")) {
                     String[] datos = txt_split[i].split(";");
+               for (int j = 0; j < datos.length; j++) {
+                            if (datos[j].charAt(0)==espacio) {
+                                datos[j]=datos[j].replaceFirst(" ","");
+                            }
+                            datos[j]=datos[j].toLowerCase();
+                        }
+                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
