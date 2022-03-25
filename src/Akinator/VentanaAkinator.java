@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
-    Archivocsv csv = new Archivocsv();
+    archivoCsv csv = new archivoCsv();
     BinaryTree arb = new BinaryTree();
     Node nodo = null;
     boolean hoja = false;
@@ -24,7 +24,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        Archivocsv csv = new Archivocsv();
+        archivoCsv csv = new archivoCsv();
         csv.abrirArchivo(arb);
         arb.PreOrder(arb.root);
         nodo = arb.root;

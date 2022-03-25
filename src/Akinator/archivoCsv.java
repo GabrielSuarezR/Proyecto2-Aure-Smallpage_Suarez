@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
  * @author johnd
  */
 
-public class Archivocsv {
+public class archivoCsv {
     public String abrirArchivo(BinaryTree arb){
         String aux="";   
         String texto="";
