@@ -18,7 +18,8 @@ import javax.swing.JTextArea;
  *
  * @author johnd
  */
-public class Archivocsv {
+
+public class archivoCsv {
     public String abrirArchivo(BinaryTree arb){
         String aux="";   
         String texto="";
@@ -47,7 +48,7 @@ public class Archivocsv {
                 for (int i = 1; i < txt_split.length; i++) {
                     if (txt_split[0].contains(";")) {
                     String[] datos = txt_split[i].split(";");
-                        for (int j = 0; j < datos.length; j++) {
+               for (int j = 0; j < datos.length; j++) {
                             if (datos[j].charAt(0)==espacio) {
                                 datos[j]=datos[j].replaceFirst(" ","");
                             }
