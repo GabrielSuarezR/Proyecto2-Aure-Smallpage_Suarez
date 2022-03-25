@@ -5,19 +5,26 @@
  */
 package proyecto.pkg2.aure.smallpage.suarez;
 
+import javax.security.auth.callback.ConfirmationCallback;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gabriel
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    BinaryTree arb = new BinaryTree();
+    boolean si = false;
+    boolean no = true;
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
-                archivoCsv csv = new archivoCsv();
-        System.out.println(csv.abrirArchivo());
+        archivoCsv csv = new archivoCsv();
+        csv.abrirArchivo(arb);
+        arb.PreOrder(arb.root);
+
     }
 
     /**
@@ -29,21 +36,131 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        preguntas = new javax.swing.JTextArea();
+        botonsi = new javax.swing.JButton();
+        botonNo = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Comenzar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        preguntas.setColumns(20);
+        preguntas.setRows(5);
+        jScrollPane1.setViewportView(preguntas);
+
+        botonsi.setText("Si");
+        botonsi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonsiActionPerformed(evt);
+            }
+        });
+
+        botonNo.setText("No");
+        botonNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addComponent(botonsi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonNo)
+                .addGap(49, 49, 49)
+                .addComponent(jButton1)
+                .addGap(95, 95, 95))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonsi)
+                    .addComponent(botonNo)
+                    .addComponent(jButton1))
+                .addGap(73, 73, 73))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (!arb.its_empty(arb.getRoot())) {
+            preguntas.append("¿Estás listo para jugar una ronda?"+"\n");
+            int respuesta1 = JOptionPane.showConfirmDialog(null, "Estas listo?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+            if (respuesta1==0) {
+            boolean hoja = false;
+            Node nodo = arb.root;
+            while (hoja != true) {                
+                preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
+                 int respuesta2 = JOptionPane.showConfirmDialog(null,"Tu animal "+nodo.get_info()+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                if (respuesta2==0) {
+                    nodo = nodo.Right_child(); 
+                    if (nodo.Right_child()==null | nodo.Left_child()==null) {
+                        hoja = true;
+                    }
+                }else{
+                    nodo = nodo.Left_child();
+                    if (nodo.Right_child()==null | nodo.Left_child()==null) {
+                        hoja = true;
+                    }
+                }   
+            }
+            preguntas.append("Tu animal es un : "+nodo.get_info()+"?"+"\n");
+            int respuesta2 = JOptionPane.showConfirmDialog(null, "Tu animal es un : "+nodo.get_info()+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                if (respuesta2==1) {
+                    preguntas.append("Cual era tu animal?"+"\n");
+                    String animal = JOptionPane.showInputDialog("Indica tu animal: ");
+                    preguntas.append("¿Qué diferencia a un "+animal+ " de un "+nodo.get_info()+"?"+"\n");
+                    String diferencia = JOptionPane.showInputDialog("Que los diferencia?: ");
+                    preguntas.append("¿Si el animal fuese un "+ animal+", cuál sería la respuesta a la pregunta?"+"\n");
+                    int respuesta3 = JOptionPane.showConfirmDialog(null, "Cual seria la respuesta a la pregunta?: "+"El "+animal+" "+diferencia+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                    if (respuesta3==0) {
+                        Node animalviejo = new Node(nodo.get_info());
+                        Node animalnuevo = new Node(animal);
+                        nodo.Set_info(diferencia);
+                        nodo.Set_Right_child(animalnuevo);
+                        nodo.Set_Left_child(animalviejo); 
+                        preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                    }else{
+                        Node animalviejo = new Node(nodo.get_info());
+                        Node animalnuevo = new Node(animal);
+                        nodo.Set_info(diferencia);
+                        nodo.Set_Left_child(animalnuevo);
+                        nodo.Set_Right_child(animalviejo); 
+                        preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                    }
+                }else{
+                    preguntas.append("¡Qué fácil!, ponlo más difícil la próxima vez"+"\n");
+                    
+                }
+        }else{
+                preguntas.append("Gracias por jugar!"+"\n"+"Nos vemos para el siguiente desafio :)"+"\n"+"Adios!!!!!"+"\n");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsiActionPerformed
+        si = true;
+    }//GEN-LAST:event_botonsiActionPerformed
+
+    private void botonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNoActionPerformed
+        no = true;
+    }//GEN-LAST:event_botonNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +198,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonNo;
+    private javax.swing.JButton botonsi;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea preguntas;
     // End of variables declaration//GEN-END:variables
 }

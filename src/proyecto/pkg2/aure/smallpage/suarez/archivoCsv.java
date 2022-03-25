@@ -19,7 +19,8 @@ import javax.swing.JTextArea;
  * @author gabriel
  */
 public class archivoCsv {
-     public String abrirArchivo(){
+
+     public String abrirArchivo(BinaryTree arb){
         String aux="";   
         String texto="";
         try
@@ -43,13 +44,34 @@ public class archivoCsv {
             if (!"".equals(texto) && !texto.isEmpty()){
 
                 String[] txt_split= texto.split("\n");
-                for (int i = 0; i < txt_split.length; i++) {
+                for (int i = 1; i < txt_split.length; i++) {
                     if (txt_split[0].contains(";")) {
                     String[] datos = txt_split[i].split(";");
                     System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
+                        if (i==0) {
+                            
+                        }
+                        if (i==1) {
+                            arb.insertRoot(datos[0]);
+                            arb.insertLeft(datos[0], datos[1]);
+                            arb.insertRight(datos[0], datos[2]);
+                        }else{
+                            arb.insertLeft(datos[0], datos[1]);
+                            arb.insertRight(datos[0], datos[2]);
+                        }
                     }else{
                     String[] datos = txt_split[i].split(",");
-                    System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
+                        if (i==0) {
+                            
+                        }
+                    if (i==1) {
+                            arb.insertRoot(datos[0]);
+                            arb.insertLeft(datos[0], datos[1]);
+                            arb.insertRight(datos[0], datos[2]);
+                        }else{
+                            arb.insertLeft(datos[0], datos[1]);
+                            arb.insertRight(datos[0], datos[2]);
+                        }
                     }
                 }  
             } 
