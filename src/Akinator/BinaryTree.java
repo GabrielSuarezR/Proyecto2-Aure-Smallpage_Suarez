@@ -20,7 +20,6 @@ public class BinaryTree {
         }
 	public void insertLeft(String parent, String leftvalue) {
 		Node n = find(root, parent);
-                System.out.println(n.get_info());
 		Node leftchild = new Node(leftvalue);
 		n.Set_Left_child(leftchild);
 	}
