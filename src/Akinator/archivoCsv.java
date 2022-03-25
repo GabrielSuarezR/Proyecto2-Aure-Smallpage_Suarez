@@ -16,11 +16,10 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author gabriel
+ * @author johnd
  */
-public class ArchivoCSV {
-
-     public String abrirArchivo(BinaryTree arb){
+public class Archivocsv {
+    public String abrirArchivo(BinaryTree arb){
         String aux="";   
         String texto="";
         try

@@ -24,7 +24,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
-        ArchivoCSV csv = new ArchivoCSV();
+        Archivocsv csv = new Archivocsv();
         csv.abrirArchivo(arb);
         arb.PreOrder(arb.root);
     }
