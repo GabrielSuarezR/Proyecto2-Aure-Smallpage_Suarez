@@ -3,28 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.pkg2.aure.smallpage.suarez;
+package Akinator;
 
 import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author gabriel
+ * @author sebas
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaAkinator extends javax.swing.JFrame {
+
     BinaryTree arb = new BinaryTree();
     boolean si = false;
     boolean no = true;
-    /**
-     * Creates new form VentanaPrincipal
-     */
-    public VentanaPrincipal() {
+    
+    public VentanaAkinator() {
         initComponents();
-        archivoCsv csv = new archivoCsv();
+        
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        
+        ArchivoCSV csv = new ArchivoCSV();
         csv.abrirArchivo(arb);
         arb.PreOrder(arb.root);
-
     }
 
     /**
@@ -36,73 +38,80 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        yesButton = new javax.swing.JButton();
+        noButton = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         preguntas = new javax.swing.JTextArea();
-        botonsi = new javax.swing.JButton();
-        botonNo = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Comenzar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        yesButton.setText("Si");
+        yesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                yesButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(yesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 170, 60));
+
+        noButton.setText("No");
+        noButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(noButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 170, 60));
+
+        startButton.setText("Comenzar Ronda");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 260, -1));
 
         preguntas.setColumns(20);
         preguntas.setRows(5);
         jScrollPane1.setViewportView(preguntas);
 
-        botonsi.setText("Si");
-        botonsi.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 370, 150));
+
+        backButton.setText("<<<");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonsiActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
-        botonNo.setText("No");
-        botonNo.addActionListener(new java.awt.event.ActionListener() {
+        exitButton.setText("x");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNoActionPerformed(evt);
+                exitButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(botonsi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonNo)
-                .addGap(49, 49, 49)
-                .addComponent(jButton1)
-                .addGap(95, 95, 95))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonsi)
-                    .addComponent(botonNo)
-                    .addComponent(jButton1))
-                .addGap(73, 73, 73))
-        );
+        jLabel1.setText("* Para empezar a jugar presione \"Comenzar Ronda\" *");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         if (!arb.its_empty(arb.getRoot())) {
             preguntas.append("¿Estás listo para jugar una ronda?"+"\n");
             int respuesta1 = JOptionPane.showConfirmDialog(null, "Estas listo?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
-            if (respuesta1==0) {
+            if (respuesta1 == 0) {
             boolean hoja = false;
             Node nodo = arb.root;
             while (hoja != true) {                
@@ -152,15 +161,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 preguntas.append("Gracias por jugar!"+"\n"+"Nos vemos para el siguiente desafio :)"+"\n"+"Adios!!!!!"+"\n");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_startButtonActionPerformed
 
-    private void botonsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsiActionPerformed
+    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         si = true;
-    }//GEN-LAST:event_botonsiActionPerformed
+    }//GEN-LAST:event_yesButtonActionPerformed
 
-    private void botonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNoActionPerformed
+    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         no = true;
-    }//GEN-LAST:event_botonNoActionPerformed
+    }//GEN-LAST:event_noButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        this.dispose();
+        new VentanaPrincipal();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,29 +197,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAkinator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAkinator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAkinator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAkinator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                new VentanaAkinator().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonNo;
-    private javax.swing.JButton botonsi;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton noButton;
     private javax.swing.JTextArea preguntas;
+    private javax.swing.JButton startButton;
+    private javax.swing.JButton yesButton;
     // End of variables declaration//GEN-END:variables
 }

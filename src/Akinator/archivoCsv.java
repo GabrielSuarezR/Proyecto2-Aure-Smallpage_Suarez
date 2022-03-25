@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.pkg2.aure.smallpage.suarez;
+package Akinator;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
  *
  * @author gabriel
  */
-public class archivoCsv {
+public class ArchivoCSV {
 
      public String abrirArchivo(BinaryTree arb){
         String aux="";   
