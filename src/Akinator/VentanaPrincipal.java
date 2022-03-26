@@ -5,6 +5,9 @@
  */
 package Akinator;
 
+import static Akinator.VentanaCSV.hash_table;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sebas
@@ -16,14 +19,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static BinaryTree arb;
     public static archivoCsv csv;
     public static HashTable hash_table;
-    public VentanaPrincipal() {
+    
+    public VentanaPrincipal(BinaryTree arb,archivoCsv csv, HashTable hash_table) {
         initComponents();
-        this.csv = new archivoCsv();
-        this.arb = new BinaryTree();
-        this.hash_table= new HashTable(10111);
-        String archivo_csv= csv.abrirArchivo(arb, hash_table);
+        
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        this.csv = csv;
+        this.arb = arb;
+        this.hash_table = hash_table; 
+        
     }
 
     /**
@@ -80,6 +85,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         exitButton.setText("SALIR DEL JUEGO");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 200, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
@@ -88,14 +98,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        this.dispose();
-        VentanaAkinator ventanaAkinator = new VentanaAkinator(arb, hash_table);
+        if (arb != null) {
+            this.dispose();
+            VentanaAkinator ventanaAkinator = new VentanaAkinator(arb, hash_table);
+        } else {
+            JOptionPane.showMessageDialog(null, "Para jugar debe CARGAR o INICIALIZAR un archivo csv.\nPara hacerlo entre en 'BASE DE CONOCIMIENTOS'");
+        }
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void dataBaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBaseButtonActionPerformed
         this.dispose();
-        VentanaCSV ventanaCSV = new VentanaCSV(hash_table);
+        VentanaCSV ventanaCSV = new VentanaCSV(hash_table, arb, csv);
     }//GEN-LAST:event_dataBaseButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,7 +145,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                new VentanaPrincipal(arb, csv, hash_table).setVisible(true);
             }
         });
     }

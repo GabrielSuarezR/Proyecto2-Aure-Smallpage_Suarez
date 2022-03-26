@@ -12,15 +12,23 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaCSV extends javax.swing.JFrame {
-public static HashTable hash_table;
+    public static HashTable hash_table;
+    public static BinaryTree arb;
+    public static archivoCsv csv;
+    
+    
     /**
      * Creates new form VentanaCSV
      */
-    public VentanaCSV(HashTable hash_table) {
+    public VentanaCSV(HashTable hash_table, BinaryTree arb, archivoCsv csv) {
         initComponents();
         this.hash_table= hash_table;
+        this.csv = csv;
+        this.arb = arb;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        
+        
         
     }
 
@@ -38,11 +46,11 @@ public static HashTable hash_table;
         pantalla = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        Consultar_animal = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        cargarButton = new javax.swing.JButton();
+        inicializarButton = new javax.swing.JButton();
+        consultarAnimalButton = new javax.swing.JButton();
+        guardarButton = new javax.swing.JButton();
+        mostrarBDCButton = new javax.swing.JButton();
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,25 +81,45 @@ public static HashTable hash_table;
         });
         jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        jButton1.setText("Cargar ");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
-
-        jButton2.setText("Inicializar ");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 220, -1));
-
-        Consultar_animal.setText("Consultar Animal");
-        Consultar_animal.addActionListener(new java.awt.event.ActionListener() {
+        cargarButton.setText("Cargar ");
+        cargarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consultar_animalActionPerformed(evt);
+                cargarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(Consultar_animal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 220, 30));
+        jPanel1.add(cargarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
 
-        jButton4.setText("Guardar ");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 30));
+        inicializarButton.setText("Inicializar ");
+        inicializarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inicializarButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(inicializarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 220, -1));
 
-        jButton5.setText("Mostrar Base de Conocimientos");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 220, 30));
+        consultarAnimalButton.setText("Consultar Animal");
+        consultarAnimalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarAnimalButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(consultarAnimalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 220, 30));
+
+        guardarButton.setText("Guardar ");
+        guardarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(guardarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 30));
+
+        mostrarBDCButton.setText("Mostrar Base de Conocimientos");
+        mostrarBDCButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarBDCButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(mostrarBDCButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 220, 30));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -106,14 +134,14 @@ public static HashTable hash_table;
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
-        new VentanaPrincipal();
+        new VentanaPrincipal(arb, csv, hash_table);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    private void Consultar_animalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consultar_animalActionPerformed
+    private void consultarAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAnimalButtonActionPerformed
         // TODO add your handling code here:
         String cadena= JOptionPane.showInputDialog("Ingrese el nombre del animal a buscar: ");
         boolean es_numero= cadena.matches("[+-]?\\d*(\\.\\d+)?");
@@ -129,7 +157,32 @@ public static HashTable hash_table;
         
         
         pantalla.setText("El animal buscado es: " + buscado.getInfo());
-    }//GEN-LAST:event_Consultar_animalActionPerformed
+    }//GEN-LAST:event_consultarAnimalButtonActionPerformed
+
+    private void cargarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarButtonActionPerformed
+        this.csv = new archivoCsv();
+        this.arb = new BinaryTree();
+        this.hash_table= new HashTable(10111);
+        csv.abrirArchivo(arb, hash_table);
+    }//GEN-LAST:event_cargarButtonActionPerformed
+
+    private void inicializarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicializarButtonActionPerformed
+        if (arb == null && hash_table == null) {
+            JOptionPane.showMessageDialog(null, "Su base de conocimientos ya esta vacia.");
+        } else {
+            arb = null;
+            hash_table = null;
+            JOptionPane.showMessageDialog(null, "Su Base de Conocimeintos fue inicializada correctamente");
+        }
+    }//GEN-LAST:event_inicializarButtonActionPerformed
+
+    private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guardarButtonActionPerformed
+
+    private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarBDCButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,22 +214,22 @@ public static HashTable hash_table;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaCSV(hash_table).setVisible(true);
+                new VentanaCSV(hash_table, arb, csv).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Consultar_animal;
     private javax.swing.JButton backButton;
+    private javax.swing.JButton cargarButton;
+    private javax.swing.JButton consultarAnimalButton;
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton guardarButton;
+    private javax.swing.JButton inicializarButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton mostrarBDCButton;
     private javax.swing.JTextArea pantalla;
     // End of variables declaration//GEN-END:variables
 }

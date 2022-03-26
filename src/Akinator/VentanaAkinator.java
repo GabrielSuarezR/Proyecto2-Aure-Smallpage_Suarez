@@ -19,6 +19,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
     boolean no = true;
     public static BinaryTree arb;
     public static HashTable hash_table;
+    public static archivoCsv csv;
     
     public VentanaAkinator(BinaryTree arb, HashTable hash_table) {
         initComponents();
@@ -26,6 +27,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.hash_table= hash_table;
         this.arb= arb;
+        this.csv = csv;
         yesButton.setEnabled(false);
         noButton.setEnabled(false);
     }
@@ -201,7 +203,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
-        new VentanaPrincipal();
+        new VentanaPrincipal(arb, csv, hash_table);
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
