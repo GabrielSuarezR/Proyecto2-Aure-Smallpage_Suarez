@@ -52,6 +52,8 @@ public class VentanaCSV extends javax.swing.JFrame {
         guardarButton = new javax.swing.JButton();
         mostrarBDCButton = new javax.swing.JButton();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,7 +89,7 @@ public class VentanaCSV extends javax.swing.JFrame {
                 cargarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(cargarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
+        jPanel1.add(cargarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 220, 20));
 
         inicializarButton.setText("Inicializar ");
         inicializarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +105,7 @@ public class VentanaCSV extends javax.swing.JFrame {
                 consultarAnimalButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(consultarAnimalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 220, 30));
+        jPanel1.add(consultarAnimalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 30));
 
         guardarButton.setText("Guardar ");
         guardarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +113,7 @@ public class VentanaCSV extends javax.swing.JFrame {
                 guardarButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(guardarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 30));
+        jPanel1.add(guardarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 210, 20));
 
         mostrarBDCButton.setText("Mostrar Base de Conocimientos");
         mostrarBDCButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,13 +121,29 @@ public class VentanaCSV extends javax.swing.JFrame {
                 mostrarBDCButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(mostrarBDCButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 220, 30));
+        jPanel1.add(mostrarBDCButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 220, 30));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText(" *NOTA: Recuerde que al cargar un \n archivo, este debe ser de tipo \"csv\".");
-        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 210, 40));
+        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 210, 40));
+
+        jButton1.setText("Guardar en archivo por defecto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, 20));
+
+        jButton2.setText("Cargar archivo por defecto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 220, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
@@ -156,7 +174,7 @@ public class VentanaCSV extends javax.swing.JFrame {
         }
         
         
-        pantalla.setText("El animal buscado es: " + buscado.getInfo());
+        pantalla.setText("El animal " + buscado.getInfo()+" Se encuentra registrado");
     }//GEN-LAST:event_consultarAnimalButtonActionPerformed
 
     private void cargarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarButtonActionPerformed
@@ -167,7 +185,7 @@ public class VentanaCSV extends javax.swing.JFrame {
     }//GEN-LAST:event_cargarButtonActionPerformed
 
     private void inicializarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicializarButtonActionPerformed
-        if (arb == null && hash_table == null) {
+    if (arb == null && hash_table == null) {
             JOptionPane.showMessageDialog(null, "Su base de conocimientos ya esta vacia.");
         } else {
             arb = null;
@@ -177,12 +195,38 @@ public class VentanaCSV extends javax.swing.JFrame {
     }//GEN-LAST:event_inicializarButtonActionPerformed
 
     private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
-        // TODO add your handling code here:
+        archivoCsv csvAux = new archivoCsv();
+        if (arb == null && hash_table == null) {
+            JOptionPane.showMessageDialog(null, "Su arbol se encuentra vacio");
+        } else {
+            String cadena="Pregunta, No, Si"+"\n";
+            cadena=arb.archivorder(arb.getRoot(), cadena);
+            csvAux.guardarArchivo(cadena);
+        }
+
     }//GEN-LAST:event_guardarButtonActionPerformed
 
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        archivoCsv csvAux = new archivoCsv();
+        if (arb == null && hash_table == null) {
+            JOptionPane.showMessageDialog(null, "Su arbol se encuentra vacio");
+        } else {
+            String cadena="Pregunta, No, Si"+"\n";
+            cadena=arb.archivorder(arb.getRoot(), cadena);
+            csvAux.escribirCvsPorDefecto(cadena);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.csv = new archivoCsv();
+        this.arb = new BinaryTree();
+        this.hash_table= new HashTable(10111);
+        csv.leerPorDefecto(arb, hash_table);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +270,8 @@ public class VentanaCSV extends javax.swing.JFrame {
     private javax.swing.JButton exitButton;
     private javax.swing.JButton guardarButton;
     private javax.swing.JButton inicializarButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
