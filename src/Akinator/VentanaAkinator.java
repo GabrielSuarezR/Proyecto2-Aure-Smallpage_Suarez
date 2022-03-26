@@ -13,21 +13,21 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
-    archivoCsv csv = new archivoCsv();
-    BinaryTree arb = new BinaryTree();
     Node nodo = null;
     boolean hoja = false;
     boolean si = false;
     boolean no = true;
+    public static BinaryTree arb;
+    public static HashTable hash_table;
+    public static archivoCsv csv;
     
-    public VentanaAkinator() {
+    public VentanaAkinator(BinaryTree arb, HashTable hash_table) {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        archivoCsv csv = new archivoCsv();
-        csv.abrirArchivo(arb);
-        arb.PreOrder(arb.root);
-        nodo = arb.root;
+        this.hash_table= hash_table;
+        this.arb= arb;
+        this.csv = csv;
         yesButton.setEnabled(false);
         noButton.setEnabled(false);
     }
@@ -111,6 +111,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarActionPerformed
+        nodo = arb.getRoot();
         if (!arb.its_empty(arb.getRoot())) {
             preguntas.append("¿Estás listo para jugar una ronda?"+"\n");
             int respuesta1 = JOptionPane.showConfirmDialog(null, "Estas listo?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
@@ -160,18 +161,19 @@ public class VentanaAkinator extends javax.swing.JFrame {
                 }
                 
             }else{
-             preguntas.append("Cual era tu animal?"+"\n");
-                    String animal = JOptionPane.showInputDialog("Indica tu animal: ");
-                    preguntas.append("¿Qué diferencia a un "+animal+ " de un "+nodo.get_info()+"?"+"\n");
-                    String diferencia = JOptionPane.showInputDialog("Que los diferencia?: ");
-                    preguntas.append("¿Si el animal fuese un "+ animal+", cuál sería la respuesta a la pregunta?"+"\n");
-                    int respuesta3 = JOptionPane.showConfirmDialog(null, "Cual seria la respuesta a la pregunta?: "+"El "+animal+" "+diferencia+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+             preguntas.append("¿Qué animal era?"+"\n");
+                    String animal = JOptionPane.showInputDialog("¿Qué animal era?. Indica tu animal: ");
+                    preguntas.append("¿Qué diferencia a un/una "+ nodo.get_info() + " y a un/una" +animal+ "?"+"\n");
+                    String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                    preguntas.append("¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?"+"\n");
+                    int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                     if (respuesta3==0) {
                         Node animalviejo = new Node(nodo.get_info());
                         Node animalnuevo = new Node(animal);
                         nodo.Set_info(diferencia);
                         nodo.Set_Right_child(animalnuevo);
-                        nodo.Set_Left_child(animalviejo); 
+                        nodo.Set_Left_child(animalviejo);
+                        hash_table.insertar(animal);
                         preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
                         yesButton.setEnabled(false);
                         noButton.setEnabled(false);
@@ -184,6 +186,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
                         nodo.Set_info(diferencia);
                         nodo.Set_Left_child(animalnuevo);
                         nodo.Set_Right_child(animalviejo); 
+                        hash_table.insertar(animal);
                         preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
                         yesButton.setEnabled(false);
                         noButton.setEnabled(false);
@@ -200,7 +203,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
-        new VentanaPrincipal();
+        new VentanaPrincipal(arb, csv, hash_table);
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
@@ -234,7 +237,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaAkinator().setVisible(true);
+                new VentanaAkinator(arb, hash_table).setVisible(true);
             }
         });
     }

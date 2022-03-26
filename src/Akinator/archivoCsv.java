@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
  */
 
 public class archivoCsv {
-    public String abrirArchivo(BinaryTree arb){
+    public String abrirArchivo(BinaryTree arb, HashTable hash_table){
         String aux="";   
         String texto="";
         try
@@ -82,7 +82,15 @@ public class archivoCsv {
                     }
                 }  
             } 
-               lee.close();      
+              
+            String cadena="";
+            cadena= arb.PreOrder(arb.getRoot(), cadena);
+            String [] animales= cadena.split(",");
+             for (int i = 0; i <animales.length ; i++) {
+                 System.out.println(animales[i]);
+                 hash_table.insertar(animales[i]);
+             }
+            lee.close();      
           }
          }
          catch(IOException ex)

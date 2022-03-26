@@ -65,13 +65,20 @@ public class BinaryTree {
 		printTree(n.Right_child());
 	}
 	
-	public void PreOrder(Node n ){
-		
-		if (n == null)
-			return;
-		n.displayNode(n);
-		PreOrder(n.Left_child());
-		PreOrder(n.Right_child());
+	public String PreOrder(Node n, String cadena){
+		if (n != null){
+                    if (n.Left_child()==null && n.Right_child()==null) {
+                        if (cadena.equals("")) {
+                            cadena+=n.get_info();
+                        }
+                        else{
+                            cadena+= "," + n.get_info();
+                        }
+                    }
+		cadena= PreOrder(n.Left_child(), cadena);
+		cadena= PreOrder(n.Right_child(), cadena);
+                }
+                return cadena;
 	}
 	
 	public void InOrder(Node n ){

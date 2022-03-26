@@ -9,10 +9,16 @@ package Akinator;
  *
  * @author sebas
  */
+
 public class Main {
+    public static BinaryTree arb;
+    public static HashTable hash_table;
+    public static archivoCsv csv;
+    
     public static void main(String[] args) {
         
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(arb, csv, hash_table);
+        ventanaPrincipal.setVisible(true);
         
         
     }
