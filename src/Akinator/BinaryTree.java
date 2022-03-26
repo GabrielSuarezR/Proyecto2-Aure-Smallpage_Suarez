@@ -98,6 +98,17 @@ public class BinaryTree {
 		PostOrder(n.Right_child());
 		n.displayNode(n);
 	}
+        public String archivorder(Node n,String cadena){
+            if (n!=null){ 
+            if (n.Left_child() !=null && n.Right_child()!=null) {
+                 cadena += n.get_info()+","+n.Left_child().get_info()+","+n.Right_child().get_info()+"\n";
+                  
+            }
+            cadena = archivorder(n.Left_child(), cadena);
+            cadena = archivorder(n.Right_child(), cadena);
+            }
+            return cadena;
+        }
 
         public Node Max(Node n) {
             if (n.Right_child() == null) {
