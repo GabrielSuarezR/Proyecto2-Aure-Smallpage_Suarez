@@ -6,6 +6,7 @@
 package Akinator;
 
 import static Akinator.VentanaCSV.hash_table;
+import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 
 /**
@@ -112,7 +113,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_dataBaseButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);
+        int confirmacionSalir = JOptionPane.showConfirmDialog(null, "Deseas salir del juego?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+            if (confirmacionSalir == 0) {
+                System.exit(0);  
+
+        }else{
+                return;
+            }
     }//GEN-LAST:event_exitButtonActionPerformed
 
     /**

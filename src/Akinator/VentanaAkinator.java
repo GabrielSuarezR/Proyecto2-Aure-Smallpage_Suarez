@@ -49,7 +49,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
         preguntas = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        helpButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,13 +78,17 @@ public class VentanaAkinator extends javax.swing.JFrame {
                 comenzarActionPerformed(evt);
             }
         });
-        jPanel1.add(comenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 260, -1));
+        jPanel1.add(comenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
+        jScrollPane1.setViewportBorder(new javax.swing.border.MatteBorder(null));
+
+        preguntas.setEditable(false);
         preguntas.setColumns(20);
+        preguntas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         preguntas.setRows(5);
         jScrollPane1.setViewportView(preguntas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 370, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 410, 150));
 
         backButton.setText("<<<");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,8 +106,13 @@ public class VentanaAkinator extends javax.swing.JFrame {
         });
         jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        jLabel1.setText("* Para empezar a jugar presione \"Comenzar Ronda\" *");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        helpButton.setText("Como Jugar");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
@@ -113,33 +122,34 @@ public class VentanaAkinator extends javax.swing.JFrame {
     private void comenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarActionPerformed
         nodo = arb.getRoot();
         if (!arb.its_empty(arb.getRoot())) {
-            preguntas.append("¿Estás listo para jugar una ronda?"+"\n");
-            int respuesta1 = JOptionPane.showConfirmDialog(null, "Estas listo?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+            int respuesta1 = JOptionPane.showConfirmDialog(null, "¿Deseas empezar una ronda?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
             if (respuesta1 == 0) {
-                preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
+                preguntas.setText("");
+                preguntas.append("\n            Tu animal ... "+nodo.get_info()+"?"+"\n");
                 yesButton.setEnabled(true);
                 noButton.setEnabled(true);
                 comenzar.setEnabled(false);
 
         }else{
-                preguntas.append("Nos vemos para el proximo desafio, Adios!!!!");
+                preguntas.append("            Nos vemos para el proximo desafio, Adios!!!!");
             }
         }
     }//GEN-LAST:event_comenzarActionPerformed
 
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
-            if (hoja != true) {                
+        preguntas.append("\n                Respuesta: Si\n\n");    
+        if (hoja != true) {                
                 nodo = nodo.Right_child(); 
                 if (nodo.Right_child()==null | nodo.Left_child()==null) {
                     hoja = true;
-                    preguntas.append("Tu animal es un : "+nodo.get_info()+"?"+"\n");
+                    preguntas.append("            Tu animal es un/una ... "+nodo.get_info()+"?"+"\n");
                 }
                 if (hoja!=true) {
-                    preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
+                    preguntas.append("            Tu animal ... "+nodo.get_info()+"?"+"\n");
                 }
                 
             }else{
-               preguntas.append("¡Qué fácil!, ponlo más difícil la próxima vez"+"\n");
+               preguntas.append("            ¡Qué fácil!, ponlo más difícil la próxima vez"+"\n");
                yesButton.setEnabled(false);
                 noButton.setEnabled(false);
                 comenzar.setEnabled(true);
@@ -150,50 +160,78 @@ public class VentanaAkinator extends javax.swing.JFrame {
     }//GEN-LAST:event_yesButtonActionPerformed
 
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
+        preguntas.append("\n                Respuesta: No\n\n");
         if (hoja != true) {                
                 nodo = nodo.Left_child(); 
                 if (nodo.Right_child()==null | nodo.Left_child()==null) {
                     hoja = true;
-                     preguntas.append("Tu animal es un : "+nodo.get_info()+"?"+"\n");
+                     preguntas.append("            Tu animal es un/una ... "+nodo.get_info()+"?"+"\n");
                 }
                 if (hoja!=true) {
-                    preguntas.append("Tu animal "+nodo.get_info()+"?"+"\n");
+                    preguntas.append("            Tu animal ... "+nodo.get_info()+"?"+"\n");
                 }
                 
-            }else{
-             preguntas.append("¿Qué animal era?"+"\n");
-                    String animal = JOptionPane.showInputDialog("¿Qué animal era?. Indica tu animal: ");
-                    preguntas.append("¿Qué diferencia a un/una "+ nodo.get_info() + " y a un/una" +animal+ "?"+"\n");
-                    String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
-                    preguntas.append("¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?"+"\n");
-                    int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
-                    if (respuesta3==0) {
-                        Node animalviejo = new Node(nodo.get_info());
-                        Node animalnuevo = new Node(animal);
-                        nodo.Set_info(diferencia);
-                        nodo.Set_Right_child(animalnuevo);
-                        nodo.Set_Left_child(animalviejo);
-                        hash_table.insertar(animal);
-                        preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
-                        yesButton.setEnabled(false);
-                        noButton.setEnabled(false);
-                        comenzar.setEnabled(true);
-                        nodo = arb.root;
-                        hoja = false;
-                    }else{
-                        Node animalviejo = new Node(nodo.get_info());
-                        Node animalnuevo = new Node(animal);
-                        nodo.Set_info(diferencia);
-                        nodo.Set_Left_child(animalnuevo);
-                        nodo.Set_Right_child(animalviejo); 
-                        hash_table.insertar(animal);
-                        preguntas.append("¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
-                        yesButton.setEnabled(false);
-                        noButton.setEnabled(false);
-                        comenzar.setEnabled(true);
-                        nodo = arb.root;
-                        hoja = false;
-        }
+        }else{
+            boolean validacion1 = true;
+            while (validacion1) {
+                String animal = JOptionPane.showInputDialog("¿Cual era tu animal?");
+                if (arb.find(arb.getRoot(), animal) != null){
+                    JOptionPane.showMessageDialog(null, "Este animal se encuentra en la base de conocimientos, es posible que no hayas respondido de manera correcta alguna pregunta.");
+                    yesButton.setEnabled(false);
+                    noButton.setEnabled(false);
+                    comenzar.setEnabled(true);
+                    preguntas.setText("");
+                    nodo = arb.root;
+                    hoja = false;
+                    validacion1 = false;
+                    
+                }else if(animal.isBlank() | animal.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre de su animal.");
+                    validacion1 = true;
+                }else{
+                    boolean validacion2 = true;
+                    while (validacion2) {                        
+                        String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                        if (diferencia.isBlank() | diferencia.isEmpty()){
+                            JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+animal+ " de un a un/una "  + nodo.get_info()+".");
+                            validacion2 = true;
+                        }else{
+                            int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                            if (respuesta3==0) {
+                                Node animalviejo = new Node(nodo.get_info());
+                                Node animalnuevo = new Node(animal);
+                                nodo.Set_info(diferencia);
+                                nodo.Set_Right_child(animalnuevo);
+                                nodo.Set_Left_child(animalviejo);
+                                hash_table.insertar(animal);
+                                JOptionPane.showMessageDialog(null, "            ¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                                yesButton.setEnabled(false);
+                                noButton.setEnabled(false);
+                                comenzar.setEnabled(true);
+                                nodo = arb.root;
+                                hoja = false;
+                                validacion1 = false;
+                                validacion2 = false;
+                            }else{
+                                Node animalviejo = new Node(nodo.get_info());
+                                Node animalnuevo = new Node(animal);
+                                nodo.Set_info(diferencia);
+                                nodo.Set_Left_child(animalnuevo);
+                                nodo.Set_Right_child(animalviejo); 
+                                hash_table.insertar(animal);
+                                preguntas.append("            ¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                                yesButton.setEnabled(false);
+                                noButton.setEnabled(false);
+                                comenzar.setEnabled(true);
+                                nodo = arb.root;
+                                hoja = false;
+                                validacion1 = false;
+                                validacion2 = false;
+                        }
+                        }
+                    } 
+                }
+            }            
         }
     }//GEN-LAST:event_noButtonActionPerformed
 
@@ -205,6 +243,10 @@ public class VentanaAkinator extends javax.swing.JFrame {
         this.dispose();
         new VentanaPrincipal(arb, csv, hash_table);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "                                      REGLAS DEL JUEGO\n\n Antes  de  empezar a jugar  debes  pensar  en  un  animal y  Akinator\n intentara adivinarlo a traves de distintas preguntas a las que podras\n responder  'Si'  o  'No'.  Si  Akinator  logra  adivinar  el  animal   en   el\n que  estabas  pensando,  el  habra ganado el juego,  de  lo  contrario,\n tu habras sido el ganador.\n Para iniciar una partida presiona 'Comenzar Ronda'.\n\n                                      QUE TE DIVIERTAS!");
+    }//GEN-LAST:event_helpButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,7 +288,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JButton comenzar;
     private javax.swing.JButton exitButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton helpButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noButton;
