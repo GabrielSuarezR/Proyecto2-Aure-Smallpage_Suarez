@@ -175,7 +175,15 @@ public class VentanaAkinator extends javax.swing.JFrame {
             boolean validacion1 = true;
             while (validacion1) {
                 String animal = JOptionPane.showInputDialog("¿Cual era tu animal?");
-                if (arb.find(arb.getRoot(), animal) != null){
+                boolean validar= archivoCsv.validacion_animal(animal);
+                while (validar) {                    
+                    JOptionPane.showMessageDialog(null, "Ingreso inválido. el animal no puede contener números ni estar vacío");
+                    animal = JOptionPane.showInputDialog("¿Cual era tu animal?");
+                    validar= archivoCsv.validacion_animal(animal);
+                }
+                animal=archivoCsv.quitar_acentos(animal);
+                animal=animal.toLowerCase();
+                if (hash_table.buscar(animal) != null){
                     JOptionPane.showMessageDialog(null, "Este animal se encuentra en la base de conocimientos, es posible que no hayas respondido de manera correcta alguna pregunta.");
                     yesButton.setEnabled(false);
                     noButton.setEnabled(false);
@@ -185,13 +193,16 @@ public class VentanaAkinator extends javax.swing.JFrame {
                     hoja = false;
                     validacion1 = false;
                     
-                }else if(animal.isBlank() | animal.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre de su animal.");
-                    validacion1 = true;
                 }else{
                     boolean validacion2 = true;
                     while (validacion2) {                        
                         String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                        while (diferencia==null || diferencia.isBlank() || diferencia.isEmpty() ) {                            
+                            JOptionPane.showMessageDialog(null, "Ingreso inválido, la diferencia no puede estar vacía");
+                            diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                        }
+                        diferencia=archivoCsv.quitar_acentos(diferencia);
+                        diferencia=diferencia.toLowerCase();
                         if (diferencia.isBlank() | diferencia.isEmpty()){
                             JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+animal+ " de un a un/una "  + nodo.get_info()+".");
                             validacion2 = true;

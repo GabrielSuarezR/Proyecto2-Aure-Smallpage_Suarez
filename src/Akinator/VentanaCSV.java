@@ -162,6 +162,8 @@ public class VentanaCSV extends javax.swing.JFrame {
             if (es_numero || cadena.isBlank() || cadena.isEmpty() || cadena==null) {
                 JOptionPane.showMessageDialog(null, "La cadena no puede ser numérica o estar vacía");
             }else{
+               cadena= archivoCsv.quitar_acentos(cadena);
+               cadena= cadena.toLowerCase();
                Nodo buscado= hash_table.buscar(cadena);
                 if (buscado==null) {
                     JOptionPane.showMessageDialog(null, "'"+cadena+"'"+" no se encuentra registado en la base de conocimientos");
