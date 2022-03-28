@@ -218,16 +218,14 @@ public class VentanaCSV extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarButtonActionPerformed
 
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
-<<<<<<< HEAD
 
-=======
         // TODO add your handling code here:
         if ((arb == null) && (hash_table == null)) {
             JOptionPane.showMessageDialog(null, "Para mostrar una base de conocimientos, primero debe cargar un archivo");
         } else {
-            //arb.Inicializar_mostrar(arb.getRoot());
+             treeGUI gui = new treeGUI(arb);
+             new VentanaCSV(hash_table, arb, csv).setVisible(true);
         }
->>>>>>> f2df265cf71dc2bbf9a0d912327ec20f767a5c6e
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
 
     private void guardarPorDefectoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPorDefectoButtonActionPerformed

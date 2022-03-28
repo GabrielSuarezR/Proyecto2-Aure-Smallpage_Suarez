@@ -133,5 +133,10 @@ public class ArbolBinario {
             }
             return cadena;
         }
+        public int getheight(Nodo_arbol root) {
+		if (root == null)
+			return 0;
+		return Math.max(getheight(root.Left_child()), getheight(root.Right_child())) + 1;
+	}
          
 }
