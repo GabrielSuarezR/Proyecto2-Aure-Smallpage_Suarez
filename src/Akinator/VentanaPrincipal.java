@@ -17,11 +17,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    public static BinaryTree arb;
+    public static ArbolBinario arb;
     public static archivoCsv csv;
     public static HashTable hash_table;
     
-    public VentanaPrincipal(BinaryTree arb,archivoCsv csv, HashTable hash_table) {
+    public VentanaPrincipal(ArbolBinario arb,archivoCsv csv, HashTable hash_table) {
         initComponents();
         
         this.setVisible(true);

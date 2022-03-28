@@ -13,15 +13,15 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
-    Node nodo = null;
+    Nodo_arbol nodo = null;
     boolean hoja = false;
     boolean si = false;
     boolean no = true;
-    public static BinaryTree arb;
+    public static ArbolBinario arb;
     public static HashTable hash_table;
     public static archivoCsv csv;
     
-    public VentanaAkinator(BinaryTree arb, HashTable hash_table) {
+    public VentanaAkinator(ArbolBinario arb, HashTable hash_table) {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -209,8 +209,8 @@ public class VentanaAkinator extends javax.swing.JFrame {
                         }else{
                             int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                             if (respuesta3==0) {
-                                Node animalviejo = new Node(nodo.get_info());
-                                Node animalnuevo = new Node(animal);
+                                Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
+                                Nodo_arbol animalnuevo = new Nodo_arbol(animal);
                                 nodo.Set_info(diferencia);
                                 nodo.Set_Right_child(animalnuevo);
                                 nodo.Set_Left_child(animalviejo);
@@ -224,8 +224,8 @@ public class VentanaAkinator extends javax.swing.JFrame {
                                 validacion1 = false;
                                 validacion2 = false;
                             }else{
-                                Node animalviejo = new Node(nodo.get_info());
-                                Node animalnuevo = new Node(animal);
+                                Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
+                                Nodo_arbol animalnuevo = new Nodo_arbol(animal);
                                 nodo.Set_info(diferencia);
                                 nodo.Set_Left_child(animalnuevo);
                                 nodo.Set_Right_child(animalviejo); 

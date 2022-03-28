@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
  */
 
 public class archivoCsv {
-    public String abrirArchivo(BinaryTree arb, HashTable hash_table){
+    public String abrirArchivo(ArbolBinario arb, HashTable hash_table){
         String aux="";   
         String texto="";
         try
@@ -77,7 +77,6 @@ public class archivoCsv {
                             datos[j]=datos[j].toLowerCase();
                             datos[j]=quitar_acentos(datos[j]);
                         }
-                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
@@ -103,11 +102,13 @@ public class archivoCsv {
             lee.close();      
           }
          }
-         catch(IOException ex)
+         catch(Exception e)
          {
-           JOptionPane.showMessageDialog(null,ex+"" +
-                 "\nNo se ha encontrado el archivo",
+           JOptionPane.showMessageDialog(null, 
+                 "Archivo de texto inválido",
                        "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+           texto="";
+           return texto;
           } 
         return texto;
         
@@ -127,7 +128,7 @@ public class archivoCsv {
                save.write(cadena);
                save.close();
                JOptionPane.showMessageDialog(null,
-                    "El archivo se a guardado Exitosamente",
+                    "El archivo se ha guardado Exitosamente",
                         "Información",JOptionPane.INFORMATION_MESSAGE);
             }
                  }else if (guarda !=null){
@@ -142,7 +143,7 @@ public class archivoCsv {
          }
          
         }
-         catch(IOException ex)
+         catch(Exception e)
          {
           JOptionPane.showMessageDialog(null,
                "Su archivo no se ha guardado",
@@ -156,17 +157,17 @@ public class archivoCsv {
         save.write(cadena);
         save.close();
         JOptionPane.showMessageDialog(null,
-             "El archivo se a guardado Exitosamente",
+             "El archivo se ha guardado Exitosamente",
                  "Información",JOptionPane.INFORMATION_MESSAGE);
 
-     }catch(IOException ex)
+     }catch(Exception e)
          {
           JOptionPane.showMessageDialog(null,
                "Su archivo no se ha guardado",
                   "Advertencia",JOptionPane.WARNING_MESSAGE);
          }
 }
-     public void leerPorDefecto(BinaryTree arb, HashTable hash_table){
+     public void leerPorDefecto(ArbolBinario arb, HashTable hash_table){
          String aux="";   
         String texto="";
         try
@@ -238,12 +239,13 @@ public class archivoCsv {
             lee.close();      
           JOptionPane.showMessageDialog(null, "Leido exitosamente");
      
-        }catch(IOException ex)
+        }catch(Exception e)
          {
-           JOptionPane.showMessageDialog(null,ex+"" +
-                 "\nNo se ha encontrado el archivo",
+           JOptionPane.showMessageDialog(null,
+                 "Archivo de texto inválido",
                        "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-          } 
+          }
+        
 }
      
      public static String quitar_acentos(String palabra) {
