@@ -37,7 +37,7 @@ public class HashTable {
             else if (key.codePointAt(i)>=97 && key.codePointAt(i)<=122) {
                 valor+=((key.codePointAt(i)-60)*posicion);
             }
-            posicion++;
+            posicion=posicion*2;
         }
         return (valor % tamaño_tabla);
     }

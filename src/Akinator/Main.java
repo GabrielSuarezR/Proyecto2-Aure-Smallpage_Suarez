@@ -11,7 +11,7 @@ package Akinator;
  */
 
 public class Main {
-    public static BinaryTree arb;
+    public static ArbolBinario arb;
     public static HashTable hash_table;
     public static archivoCsv csv;
     
