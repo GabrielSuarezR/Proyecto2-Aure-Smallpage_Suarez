@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.Normalizer;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -53,6 +54,7 @@ public class archivoCsv {
                                 datos[j]=datos[j].replaceFirst(" ","");
                             }
                             datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
                         }
                         System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
@@ -68,6 +70,14 @@ public class archivoCsv {
                         }
                     }else{
                     String[] datos = txt_split[i].split(",");
+                    for (int j = 0; j < datos.length; j++) {
+                            if (datos[j].charAt(0)==espacio) {
+                                datos[j]=datos[j].replaceFirst(" ","");
+                            }
+                            datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
+                        }
+                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
@@ -179,6 +189,7 @@ public class archivoCsv {
                                 datos[j]=datos[j].replaceFirst(" ","");
                             }
                             datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
                         }
                         System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
@@ -194,6 +205,14 @@ public class archivoCsv {
                         }
                     }else{
                     String[] datos = txt_split[i].split(",");
+                    for (int j = 0; j < datos.length; j++) {
+                            if (datos[j].charAt(0)==espacio) {
+                                datos[j]=datos[j].replaceFirst(" ","");
+                            }
+                            datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
+                        }
+                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
@@ -226,4 +245,22 @@ public class archivoCsv {
                        "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
           } 
 }
+     
+     public static String quitar_acentos(String palabra) {
+        palabra = Normalizer.normalize(palabra, Normalizer.Form.NFD);
+        palabra = palabra.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return palabra;
+     }
+     
+     public static boolean validacion_animal(String animal){
+         if (animal==null) {
+             return true;
+         }
+         boolean es_numero= animal.matches("[+-]?\\d*(\\.\\d+)?");
+         if (es_numero || animal.isBlank() || animal.isEmpty() || animal==null) {
+            return true;
+        }
+         return false;
+     }
 }
+

@@ -2,10 +2,23 @@ Pregunta, No, Si
 vuela,ladra,caza
 ladra,tiene colmillos,perro
 tiene colmillos,cuello largo,tiene trompa
-cuello largo,rat�n,jirafa
+cuello largo,vive en el agua,es domesticable
+vive en el agua,ratón,ajolote
+es domesticable,jirafa,caballo
 tiene trompa,le gusta entrar al agua,elefante
-le gusta entrar al agua,jabal�,se sumerge por largo tiempo
-se sumerge por largo tiempo,rinoceronte,hipop�tamo
-caza,come carro�a,es negro
-come carro�a,es insecto,buitre
-es insecto,p�jaro,mosca
+le gusta entrar al agua,es parecido a un perro,se sumerge por largo tiempo
+es parecido a un perro,es el rey de la selva,lobo
+es el rey de la selva,es un felino,leon
+es un felino,jabalí,puede ser domesticado
+puede ser domesticado,pantera,gato
+se sumerge por largo tiempo,rinoceronte,es de color verde
+es de color verde,hipopótamo,cocodrilo
+caza,come carroña,es un dinosaurio
+come carroña,es insecto,buitre
+es insecto,no puede volar,tiene alas grandes
+no puede volar,pájaro,delfin
+tiene alas grandes,tiene un aguijon,libelula
+tiene un aguijon,mosca,abeja
+es un dinosaurio,es colorida,terodactilo
+es colorida,tiene la cabeza calva,guacamaya
+tiene la cabeza calva,águila,condor
