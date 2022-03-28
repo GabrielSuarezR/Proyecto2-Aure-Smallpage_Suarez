@@ -213,7 +213,7 @@ public class VentanaCSV extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarButtonActionPerformed
 
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
 
     private void guardarPorDefectoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPorDefectoButtonActionPerformed
