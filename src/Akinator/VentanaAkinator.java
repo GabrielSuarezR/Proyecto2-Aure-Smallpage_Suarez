@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
-    Nodo_arbol nodo = null;
+    Nodo nodo = null;
     boolean hoja = false;
     boolean si = false;
     boolean no = true;
@@ -163,7 +163,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
             int respuesta1 = JOptionPane.showConfirmDialog(null, "¿Deseas empezar una ronda?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
             if (respuesta1 == 0) {
                 preguntas.setText("");
-                preguntas.append("\n            Tu animal ... "+nodo.get_info()+"?"+"\n");
+                preguntas.append("\n            Tu animal ... "+nodo.getInfo()+"?"+"\n");
                 yesButton.setEnabled(true);
                 noButton.setEnabled(true);
                 comenzar.setEnabled(false);
@@ -177,13 +177,13 @@ public class VentanaAkinator extends javax.swing.JFrame {
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         preguntas.append("\n                Respuesta: Si\n\n");    
         if (hoja != true) {                
-                nodo = nodo.Right_child(); 
-                if (nodo.Right_child()==null | nodo.Left_child()==null) {
+                nodo = nodo.getRight(); 
+                if (nodo.getRight()==null | nodo.getLeft()==null) {
                     hoja = true;
-                    preguntas.append("            Tu animal es un/una ... "+nodo.get_info()+"?"+"\n");
+                    preguntas.append("            Tu animal es un/una ... "+nodo.getInfo()+"?"+"\n");
                 }
                 if (hoja!=true) {
-                    preguntas.append("            Tu animal ... "+nodo.get_info()+"?"+"\n");
+                    preguntas.append("            Tu animal ... "+nodo.getInfo()+"?"+"\n");
                 }
                 
             }else{
@@ -191,7 +191,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
                yesButton.setEnabled(false);
                 noButton.setEnabled(false);
                 comenzar.setEnabled(true);
-                nodo = arb.root;
+                nodo = arb.getRoot();
                 hoja = false;
                     }
             
@@ -200,13 +200,13 @@ public class VentanaAkinator extends javax.swing.JFrame {
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         preguntas.append("\n                Respuesta: No\n\n");
         if (hoja != true) {                
-                nodo = nodo.Left_child(); 
-                if (nodo.Right_child()==null | nodo.Left_child()==null) {
+                nodo = nodo.getLeft(); 
+                if (nodo.getRight()==null | nodo.getLeft()==null) {
                     hoja = true;
-                     preguntas.append("            Tu animal es un/una ... "+nodo.get_info()+"?"+"\n");
+                     preguntas.append("            Tu animal es un/una ... "+nodo.getInfo()+"?"+"\n");
                 }
                 if (hoja!=true) {
-                    preguntas.append("            Tu animal ... "+nodo.get_info()+"?"+"\n");
+                    preguntas.append("            Tu animal ... "+nodo.getInfo()+"?"+"\n");
                 }
                 
         }else{
@@ -227,52 +227,52 @@ public class VentanaAkinator extends javax.swing.JFrame {
                     noButton.setEnabled(false);
                     comenzar.setEnabled(true);
                     preguntas.setText("");
-                    nodo = arb.root;
+                    nodo = arb.getRoot();
                     hoja = false;
                     validacion1 = false;
                     
                 }else{
                     boolean validacion2 = true;
                     while (validacion2) {                        
-                        String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+"'"+animal+"'"+" de un a un/una "  + nodo.get_info() + "?");
+                        String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+"'"+animal+"'"+" de un a un/una "  + nodo.getInfo() + "?");
                         while (diferencia==null || diferencia.isBlank() || diferencia.isEmpty() ) {                            
                             JOptionPane.showMessageDialog(null, "Ingreso inválido, la diferencia no puede estar vacía");
-                            diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                            diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.getInfo() + "?");
                         }
                         diferencia=archivoCsv.quitar_acentos(diferencia);
                         diferencia=diferencia.toLowerCase();
                         if (diferencia.isBlank() | diferencia.isEmpty()){
-                            JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+"'"+animal+"'"+ " de un a un/una "  + nodo.get_info()+".");
+                            JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+"'"+animal+"'"+ " de un a un/una "  + nodo.getInfo()+".");
                             validacion2 = true;
                         }else{
                             int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                             if (respuesta3==0) {
-                                Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
-                                Nodo_arbol animalnuevo = new Nodo_arbol(animal);
-                                nodo.Set_info(diferencia);
-                                nodo.Set_Right_child(animalnuevo);
-                                nodo.Set_Left_child(animalviejo);
+                                Nodo animalviejo = new Nodo(nodo.getInfo());
+                                Nodo animalnuevo = new Nodo(animal);
+                                nodo.setInfo(diferencia);
+                                nodo.setRight(animalnuevo);
+                                nodo.setLeft(animalviejo);
                                 hash_table.insertar(animal);
                                 JOptionPane.showMessageDialog(null, "            ¡Muchas gracias! Ahora Akinator es mucho más inteligente que antes."+"\n");
                                 yesButton.setEnabled(false);
                                 noButton.setEnabled(false);
                                 comenzar.setEnabled(true);
-                                nodo = arb.root;
+                                nodo = arb.getRoot();
                                 hoja = false;
                                 validacion1 = false;
                                 validacion2 = false;
                             }else{
-                                Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
-                                Nodo_arbol animalnuevo = new Nodo_arbol(animal);
-                                nodo.Set_info(diferencia);
-                                nodo.Set_Left_child(animalnuevo);
-                                nodo.Set_Right_child(animalviejo); 
+                                Nodo animalviejo = new Nodo(nodo.getInfo());
+                                Nodo animalnuevo = new Nodo(animal);
+                                nodo.setInfo(diferencia);
+                                nodo.setLeft(animalnuevo);
+                                nodo.setRight(animalviejo); 
                                 hash_table.insertar(animal);
                                 preguntas.append("            ¡Muchas gracias! Ahora Akinator es mucho más inteligente que antes."+"\n");
                                 yesButton.setEnabled(false);
                                 noButton.setEnabled(false);
                                 comenzar.setEnabled(true);
-                                nodo = arb.root;
+                                nodo = arb.getRoot();
                                 hoja = false;
                                 validacion1 = false;
                                 validacion2 = false;

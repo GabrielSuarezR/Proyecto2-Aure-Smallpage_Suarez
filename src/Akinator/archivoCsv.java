@@ -56,17 +56,16 @@ public class archivoCsv {
                             datos[j]=datos[j].toLowerCase();
                             datos[j]=quitar_acentos(datos[j]);
                         }
-                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
                         if (i==1) {
-                            arb.insertRoot(datos[0]);
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_raiz(datos[0]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }else{
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }
                     }else{
                     String[] datos = txt_split[i].split(",");
@@ -81,12 +80,12 @@ public class archivoCsv {
                             
                         }
                     if (i==1) {
-                            arb.insertRoot(datos[0]);
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_raiz(datos[0]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }else{
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }
                     }
                 }  
@@ -96,7 +95,6 @@ public class archivoCsv {
             cadena= arb.PreOrder(arb.getRoot(), cadena);
             String [] animales= cadena.split(",");
              for (int i = 0; i <animales.length ; i++) {
-                 System.out.println(animales[i]);
                  hash_table.insertar(animales[i]);
              }
             lee.close();      
@@ -192,17 +190,16 @@ public class archivoCsv {
                             datos[j]=datos[j].toLowerCase();
                             datos[j]=quitar_acentos(datos[j]);
                         }
-                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
                         if (i==1) {
-                            arb.insertRoot(datos[0]);
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_raiz(datos[0]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }else{
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }
                     }else{
                     String[] datos = txt_split[i].split(",");
@@ -213,17 +210,16 @@ public class archivoCsv {
                             datos[j]=datos[j].toLowerCase();
                             datos[j]=quitar_acentos(datos[j]);
                         }
-                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
                     if (i==1) {
-                            arb.insertRoot(datos[0]);
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_raiz(datos[0]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }else{
-                            arb.insertLeft(datos[0], datos[1]);
-                            arb.insertRight(datos[0], datos[2]);
+                            arb.insertar_izq(datos[0], datos[1]);
+                            arb.insertar_der(datos[0], datos[2]);
                         }
                     }
                 }  
@@ -233,7 +229,6 @@ public class archivoCsv {
             cadena= arb.PreOrder(arb.getRoot(), cadena);
             String [] animales= cadena.split(",");
              for (int i = 0; i <animales.length ; i++) {
-                 System.out.println(animales[i]);
                  hash_table.insertar(animales[i]);
              }
             lee.close();      

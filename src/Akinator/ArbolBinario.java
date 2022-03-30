@@ -18,49 +18,45 @@ import javax.swing.JOptionPane;
  * @author gabriel
  */
 public class ArbolBinario {
-    Nodo_arbol root;
+    private Nodo root;
 
 	public ArbolBinario() {
 		this.root = null;
 	}
-        public boolean its_empty(Nodo_arbol n){
+        public boolean its_empty(Nodo n){
             return n==null;
         }
-	public void insertLeft(String parent, String leftvalue) {
-		Nodo_arbol n = find(root, parent);
-		Nodo_arbol leftchild = new Nodo_arbol(leftvalue);
-		n.Set_Left_child(leftchild);
+	public void insertar_izq(String padre, String cadena) {
+		Nodo n = buscar(root, padre);
+		Nodo hijo_izq= new Nodo(cadena);
+		n.setLeft(hijo_izq);
 	}
 
-	public void insertRight(String parent, String rightvalue) {
-		Nodo_arbol n = find(root, parent);
-		Nodo_arbol rightchild = new Nodo_arbol(rightvalue);
-		n.Set_Right_child(rightchild);
+	public void insertar_der(String padre, String cadena) {
+		Nodo n = buscar(root, padre);
+		Nodo hijo_der = new Nodo(cadena);
+		n.setRight(hijo_der);
 	}
 
-	public void insertRoot(String data) {
-		root = new Nodo_arbol(data);
+	public void insertar_raiz(String data) {
+		root = new Nodo(data);
 	}
 
-	public Nodo_arbol getRoot() {
-		return root;
-	}
-
-	public Nodo_arbol find(Nodo_arbol n, String key) {
-		Nodo_arbol result = null;
+	public Nodo buscar(Nodo n, String key) {
+		Nodo result = null;
 		if (n == null)
 			return null;
-		if (n.get_info().equals(key))
+		if (n.getInfo().equals(key))
 			return n;
-		if (n.Left_child() != null)
-			result = find(n.Left_child(), key);
+		if (n.getLeft() != null)
+			result = buscar(n.getLeft(), key);
 		if (result == null)
-			result = find(n.Right_child(), key);
+			result = buscar(n.getRight(), key);
 		return result;
 	}
 
 
-//	public void printTree(Nodo_arbol n) {
+//	public void printTree(Nodo n) {
 //		if (n == null)
 //			return;
 //		printTree(n.Left_child());
@@ -68,23 +64,23 @@ public class ArbolBinario {
 //		printTree(n.Right_child());
 //	}
 	
-	public String PreOrder(Nodo_arbol n, String cadena){
+	public String PreOrder(Nodo n, String cadena){
 		if (n != null){
-                    if (n.Left_child()==null && n.Right_child()==null) {
+                    if (n.getLeft()==null && n.getRight()==null) {
                         if (cadena.equals("")) {
-                            cadena+=n.get_info();
+                            cadena+=n.getInfo();
                         }
                         else{
-                            cadena+= "," + n.get_info();
+                            cadena+= "," + n.getInfo();
                         }
                     }
-		cadena= PreOrder(n.Left_child(), cadena);
-		cadena= PreOrder(n.Right_child(), cadena);
+		cadena= PreOrder(n.getLeft(), cadena);
+		cadena= PreOrder(n.getRight(), cadena);
                 }
                 return cadena;
 	}
         
-//        public void Inicializar_mostrar(Nodo_arbol n){
+//        public void Inicializar_mostrar(Nodo n){
 //            System.setProperty("org.graphstream.ui", "swing");
 //            Graph arbol = new SingleGraph("arbol");
 //            arbol.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
@@ -93,7 +89,7 @@ public class ArbolBinario {
 //            viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
 //        }
 //        
-//        public void PreOrder_mostrar(Nodo_arbol n, Graph arbol){
+//        public void PreOrder_mostrar(Nodo n, Graph arbol){
 //		if (n != null){
 //                    try {
 //                       Node addNode= arbol.addNode(n.get_info());
@@ -122,21 +118,29 @@ public class ArbolBinario {
 //	}
         
 	
-        public String archivorder(Nodo_arbol n,String cadena){
+        public String archivorder(Nodo n,String cadena){
             if (n!=null){ 
-            if (n.Left_child() !=null && n.Right_child()!=null) {
-                 cadena += n.get_info()+","+n.Left_child().get_info()+","+n.Right_child().get_info()+"\n";
+            if (n.getLeft() !=null && n.getRight()!=null) {
+                 cadena += n.getInfo()+","+n.getLeft().getInfo()+","+n.getRight().getInfo()+"\n";
                   
             }
-            cadena = archivorder(n.Left_child(), cadena);
-            cadena = archivorder(n.Right_child(), cadena);
+            cadena = archivorder(n.getLeft(), cadena);
+            cadena = archivorder(n.getRight(), cadena);
             }
             return cadena;
         }
-        public int getheight(Nodo_arbol root) {
+        public int getheight(Nodo root) {
 		if (root == null)
 			return 0;
-		return Math.max(getheight(root.Left_child()), getheight(root.Right_child())) + 1;
+		return Math.max(getheight(root.getLeft()), getheight(root.getRight())) + 1;
 	}
+
+        public Nodo getRoot() {
+            return root;
+        }
+
+        public void setRoot(Nodo root) {
+            this.root = root;
+        }
          
 }

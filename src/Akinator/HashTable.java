@@ -6,13 +6,19 @@
 package Akinator;
 
 /**
- *
+ Clase HashTable
+ * Estructura de datos Hashtable para almacenar y verificar la existencia de un animal
  * @author johnd
  */
 public class HashTable {
     private Nodo tabla[];
     private int tamaño_tabla;
 
+    /**
+     * Constructor de la HashTable
+     * @param tamaño_tabla numero de elementos que tendrá la tabla 
+     * @param tabla arreglo de Nodos del mismo tamaño de la tabla
+     */
     public HashTable(int tamaño_tabla) {
         this.tamaño_tabla = tamaño_tabla;
         this.tabla = new Nodo[tamaño_tabla];
@@ -21,6 +27,12 @@ public class HashTable {
         }
     }
 
+    /**
+     * Función Hashing
+     * Toma una clave y devuelve el numero de grupo al que será añadido el elemento en la tabla
+     * @param key: clave del elemento a ser añadido; el nombre del animal 
+     * @return "int" que representa el número de grupo donde será añadido la key a la tabla
+     */
     public int hashing(String key){
         int valor=0;
         int posicion=1;
@@ -42,6 +54,11 @@ public class HashTable {
         return (valor % tamaño_tabla);
     }
     
+    /**
+     * Procedimiento insertar
+     * Inserta el animal en la HashTable haciendo uso de la Hash function "hashing"
+     * @param nombre nombre del animal
+     */
     public void insertar(String nombre){
         int posicion=hashing(nombre);
         boolean existe=false;
@@ -50,15 +67,15 @@ public class HashTable {
             if (temp.getInfo().equals(nombre)) {
                 existe=true;
             }
-            while (temp.getSiguiente()!=null) {                
-                temp=temp.getSiguiente();
+            while (temp.getRight()!=null) {                
+                temp=temp.getRight();
                 if (temp.getInfo().equals(nombre)) {
                     existe=true;
                 }
             }
             if (!existe) {
                 Nodo nuevo= new Nodo(nombre);
-                temp.setSiguiente(nuevo);
+                temp.setRight(nuevo);
             }
         }
         else{
@@ -67,12 +84,18 @@ public class HashTable {
         }
     }
     
+    /**
+     * Función buscar
+     * Busca en la HashTable el animal a través de recibir el nombre del mismo
+     * @param nombre: nombre del animal
+     * @return "Nodo" retorna el nodo que contiene el nombre del animal buscado, si no se encuentra en la tabla se devuelve null
+     */
     public Nodo buscar(String nombre){
         int posicion=hashing(nombre);
         Nodo temp= tabla[posicion];
         boolean existe=false;
         if (temp!=null) {
-            if (temp.getSiguiente()==null) {
+            if (temp.getRight()==null) {
                 if (temp.getInfo().equals(nombre)) {
                     existe=true;
                 }
@@ -84,7 +107,7 @@ public class HashTable {
                         break;
                     }
                     else{
-                        temp=temp.getSiguiente();
+                        temp=temp.getRight();
                     }
                 }
             }
@@ -97,25 +120,46 @@ public class HashTable {
         }
     }
     
+    /**
+     * Procedimiento vaciado
+     * Vacia la HashTable
+     */
     public void vaciado(){
         for (int i = 0; i < tamaño_tabla; i++) {
             tabla[i]=null;
         }
     }
     
-    
+    /**
+     * Función getTable
+     * @return retorna el arreglo de nodos que forman la tabla
+     */
     public Nodo[] getTabla() {
         return tabla;
     }
 
+    /**
+     * Procedimiento setTabla
+     * Permite establecer la HashTable a un arreglo determinado
+     * @param tabla arreglo de nodos
+     */
     public void setTabla(Nodo[] tabla) {
         this.tabla = tabla;
     }
 
+    /**
+     * Función getTamaño_tabla
+     * @return retorna el tamaño de la tabla
+     */
     public int getTamaño_tabla() {
         return tamaño_tabla;
     }
 
+    /**
+     * Función setTamaño_tabla
+     * Permite establecer el tamaño de la tabla a un tamaño determinado
+     * @param tamaño_tabla recibe el tamaño de la tabla que será establecido 
+     */
     public void setTamaño_tabla(int tamaño_tabla) {
         this.tamaño_tabla = tamaño_tabla;
     }
