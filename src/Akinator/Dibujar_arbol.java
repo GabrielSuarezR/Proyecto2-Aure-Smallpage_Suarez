@@ -23,11 +23,11 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-class DrawTree extends JPanel{
+class Dibujar_arbol extends JPanel{
 	
 	public ArbolBinario tree;
 	
-	public DrawTree(ArbolBinario tree){
+	public Dibujar_arbol(ArbolBinario tree){
 		this.tree = tree;
 	}
 	
@@ -41,30 +41,30 @@ class DrawTree extends JPanel{
 
 			//DrawNode(g, tree.root,100, 50,2);
 
-		Draw(g, 0, getWidth(), 0, getHeight() / tree.getheight(tree.root), tree.root);
+		Dibujar(g, 0, getWidth(), 0, getHeight() / tree.getheight(tree.getRoot()), tree.getRoot());
 	}
 
 	
-    public void Draw(Graphics g, int StartWidth, int EndWidth, int StartHeight, int Level, Nodo_arbol node) {
-        String data = String.valueOf(node.get_info());
+    public void Dibujar(Graphics g, int StartWidth, int EndWidth, int StartHeight, int Level, Nodo nodo) {
+        String data = String.valueOf(nodo.getInfo());
         g.setFont(new Font("Tahoma", Font.BOLD, 7));
         FontMetrics fm = g.getFontMetrics();
         int dataWidth = fm.stringWidth(data);
         g.drawString(data, (StartWidth + EndWidth) / 2 - dataWidth / 2, StartHeight + Level / 2);
-        if (node.Left_child()!=null) {
+        if (nodo.getLeft()!=null) {
             g.drawLine((StartWidth + EndWidth) / 2 , StartHeight + Level / 2, (StartWidth + (StartWidth + EndWidth) / 2) / 2 , StartHeight + (Level+1)/2 + (Level+1) / 2);
             
         }
-        if (node.Right_child()!=null) {
+        if (nodo.getRight()!=null) {
             g.drawLine((StartWidth + EndWidth) / 2 , StartHeight + Level / 2, ((StartWidth + EndWidth) / 2 + EndWidth) / 2, StartHeight + (Level+1)/2 + (Level+1) / 2);
         }
 
-        if (node.Left_child() != null)            
-        	Draw(g, StartWidth, ((StartWidth + EndWidth) / 2), StartHeight + Level/2, Level, node.Left_child());
+        if (nodo.getLeft() != null)            
+        	Dibujar(g, StartWidth, ((StartWidth + EndWidth) / 2), StartHeight + Level/2, Level, nodo.getLeft());
                 
         
-        if (node.Right_child() != null)
-        	Draw(g, ((StartWidth + EndWidth) / 2), EndWidth, StartHeight + Level/2, Level, node.Right_child());
+        if (nodo.getRight() != null)
+        	Dibujar(g, ((StartWidth + EndWidth) / 2), EndWidth, StartHeight + Level/2, Level, nodo.getRight());
     }
 	
 	

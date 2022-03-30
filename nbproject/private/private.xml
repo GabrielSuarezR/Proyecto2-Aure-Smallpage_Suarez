@@ -3,7 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/DrawTree.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaPrincipal.java</file>
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/Nodo.java</file>
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaAkinator.java</file>
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/Node.java</file>
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaCSV.java</file>
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/HashTable.java</file>
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/archivoCsv.java</file>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 660e83d23a19a3d19154cc1cb2ab206cc4e5d2a0
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/archivoCsv.java</file>
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/VentanaCSV.java</file>
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/Nodo.java</file>
@@ -12,7 +26,23 @@
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/test/arbol.csv</file>
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/VentanaAkinator.java</file>
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/VentanaPrincipal.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/HashTable.java</file>
+=======
+            <file>file:/C:/Users/gabriel/Documents/NetBeansProjects/Proyecto-2-Aure-Smallpage-Suarez/src/Akinator/Node.java</file>
+=======
+            <file>file:/C:/Users/sebas/Documents/Sebas/Universidad/8vo%20trimestre/Estructura%20de%20Datos/Proyecto%20%231/AA%20Proyecto%202/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaAkinator.java</file>
+>>>>>>> 95803bb2c4d4523d0e44e08effeae4e08d24dc82
+=======
+            <file>file:/C:/Users/johnd/Documents/UNIMET/8TO%20TRIMESTRE/ESTRUCTURA%20DE%20DATOS/PROYECTO%202%20-%20V2/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaAkinator.java</file>
+            <file>file:/C:/Users/johnd/Documents/UNIMET/8TO%20TRIMESTRE/ESTRUCTURA%20DE%20DATOS/PROYECTO%202%20-%20V2/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/BinaryTree.java</file>
+            <file>file:/C:/Users/johnd/Documents/UNIMET/8TO%20TRIMESTRE/ESTRUCTURA%20DE%20DATOS/PROYECTO%202%20-%20V2/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/archivoCsv.java</file>
+            <file>file:/C:/Users/johnd/Documents/UNIMET/8TO%20TRIMESTRE/ESTRUCTURA%20DE%20DATOS/PROYECTO%202%20-%20V2/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaCSV.java</file>
+            <file>file:/C:/Users/johnd/Documents/UNIMET/8TO%20TRIMESTRE/ESTRUCTURA%20DE%20DATOS/PROYECTO%202%20-%20V2/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/HashTable.java</file>
+            <file>file:/C:/Users/johnd/Documents/UNIMET/8TO%20TRIMESTRE/ESTRUCTURA%20DE%20DATOS/PROYECTO%202%20-%20V2/Proyecto2-Aure-Smallpage_Suarez/src/Akinator/VentanaPrincipal.java</file>
+>>>>>>> f2df265cf71dc2bbf9a0d912327ec20f767a5c6e
+>>>>>>> dbbdbe50857a6d9c3e7d2f4c13c5897ac0af09b5
+>>>>>>> 660e83d23a19a3d19154cc1cb2ab206cc4e5d2a0
         </group>
     </open-files>
 </project-private>

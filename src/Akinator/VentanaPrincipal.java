@@ -44,54 +44,69 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         playButton = new javax.swing.JButton();
         dataBaseButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        playButton.setText("JUGAR");
+        playButton.setBackground(new java.awt.Color(255, 102, 0));
+        playButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        playButton.setForeground(new java.awt.Color(0, 0, 0));
+        playButton.setText("EMPEZAR UNA PARTIDA");
+        playButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        playButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(playButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 200, 50));
+        jPanel1.add(playButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 190, 50));
 
+        dataBaseButton.setBackground(new java.awt.Color(255, 102, 0));
+        dataBaseButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        dataBaseButton.setForeground(new java.awt.Color(0, 0, 0));
         dataBaseButton.setText("BASE DE CONOCIMIENTOS");
+        dataBaseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dataBaseButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dataBaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataBaseButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(dataBaseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 200, 50));
+        jPanel1.add(dataBaseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, 50));
 
-        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-        jLabel3.setText("Animales");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-        jLabel4.setText("Akinator");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel1.setText("*IMAGEN*");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
-
-        jLabel2.setText("*IMAGEN*");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
-
+        exitButton.setBackground(new java.awt.Color(255, 102, 0));
+        exitButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("SALIR DEL JUEGO");
+        exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 200, 40));
+        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 150, 40));
+
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Animales");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 40)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Akinator");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Akinator/como-funciona-akinator-trucos-para-vencerlo-149177.jpg"))); // NOI18N
+        jLabel1.setText("*IMAGEN*");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-330, 0, 780, 660));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
@@ -161,7 +176,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton dataBaseButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

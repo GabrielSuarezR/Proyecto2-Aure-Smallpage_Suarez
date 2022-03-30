@@ -6,6 +6,10 @@
 package Akinator;
 
 import javax.swing.JOptionPane;
+//import org.graphstream.graph.Edge;
+//import org.graphstream.graph.Graph;
+//import org.graphstream.graph.implementations.SingleGraph;
+//import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -52,29 +56,45 @@ public class VentanaCSV extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         guardarPorDefectoButton = new javax.swing.JButton();
         cargarPorDefectoButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        backButton.setBackground(new java.awt.Color(255, 102, 0));
+        backButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        backButton.setForeground(new java.awt.Color(0, 0, 0));
         backButton.setText("<<<");
+        backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 60, 30));
 
+        exitButton.setBackground(new java.awt.Color(255, 102, 0));
+        exitButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("x");
+        exitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 30, 30));
 
+        cargarButton.setBackground(new java.awt.Color(255, 102, 0));
+        cargarButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        cargarButton.setForeground(new java.awt.Color(0, 0, 0));
         cargarButton.setText("Cargar archivo externo");
+        cargarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cargarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarButtonActionPerformed(evt);
@@ -82,7 +102,12 @@ public class VentanaCSV extends javax.swing.JFrame {
         });
         jPanel1.add(cargarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 210, 50));
 
+        inicializarButton.setBackground(new java.awt.Color(255, 102, 0));
+        inicializarButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        inicializarButton.setForeground(new java.awt.Color(0, 0, 0));
         inicializarButton.setText("Inicializar ");
+        inicializarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inicializarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inicializarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicializarButtonActionPerformed(evt);
@@ -90,7 +115,12 @@ public class VentanaCSV extends javax.swing.JFrame {
         });
         jPanel1.add(inicializarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 210, 50));
 
+        consultarAnimalButton.setBackground(new java.awt.Color(255, 102, 0));
+        consultarAnimalButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        consultarAnimalButton.setForeground(new java.awt.Color(0, 0, 0));
         consultarAnimalButton.setText("Consultar Animal");
+        consultarAnimalButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        consultarAnimalButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consultarAnimalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarAnimalButtonActionPerformed(evt);
@@ -98,7 +128,12 @@ public class VentanaCSV extends javax.swing.JFrame {
         });
         jPanel1.add(consultarAnimalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 210, 50));
 
+        guardarButton.setBackground(new java.awt.Color(255, 102, 0));
+        guardarButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        guardarButton.setForeground(new java.awt.Color(0, 0, 0));
         guardarButton.setText("Guardar en archivo externo");
+        guardarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        guardarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         guardarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarButtonActionPerformed(evt);
@@ -106,7 +141,12 @@ public class VentanaCSV extends javax.swing.JFrame {
         });
         jPanel1.add(guardarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 210, 50));
 
+        mostrarBDCButton.setBackground(new java.awt.Color(255, 102, 0));
+        mostrarBDCButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        mostrarBDCButton.setForeground(new java.awt.Color(0, 0, 0));
         mostrarBDCButton.setText("Mostrar Base de Conocimientos");
+        mostrarBDCButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mostrarBDCButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrarBDCButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarBDCButtonActionPerformed(evt);
@@ -115,12 +155,22 @@ public class VentanaCSV extends javax.swing.JFrame {
         jPanel1.add(mostrarBDCButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 430, 40));
 
         jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 153, 51));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 17)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(51, 51, 51));
         jTextArea1.setRows(5);
         jTextArea1.setText(" *NOTA: Recuerde que al cargar un \n archivo, este debe ser de tipo \"csv\".");
-        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 210, 40));
+        jTextArea1.setBorder(null);
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 200, 40));
 
+        guardarPorDefectoButton.setBackground(new java.awt.Color(255, 102, 0));
+        guardarPorDefectoButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        guardarPorDefectoButton.setForeground(new java.awt.Color(0, 0, 0));
         guardarPorDefectoButton.setText("Guardar en archivo por defecto");
+        guardarPorDefectoButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        guardarPorDefectoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         guardarPorDefectoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarPorDefectoButtonActionPerformed(evt);
@@ -128,13 +178,22 @@ public class VentanaCSV extends javax.swing.JFrame {
         });
         jPanel1.add(guardarPorDefectoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 210, 50));
 
+        cargarPorDefectoButton.setBackground(new java.awt.Color(255, 102, 0));
+        cargarPorDefectoButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        cargarPorDefectoButton.setForeground(new java.awt.Color(0, 0, 0));
         cargarPorDefectoButton.setText("Cargar archivo por defecto");
+        cargarPorDefectoButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cargarPorDefectoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargarPorDefectoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarPorDefectoButtonActionPerformed(evt);
             }
         });
         jPanel1.add(cargarPorDefectoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 210, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Akinator/fondoAkinator.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
@@ -219,11 +278,49 @@ public class VentanaCSV extends javax.swing.JFrame {
 
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
 
+//        System.setProperty("org.graphstream.ui", "swing");
+//        Graph graph = new SingleGraph("Grafo");
+//        
+//        Node auxNodo = arb.getRoot();
+//        Nodo auxRelaciones = lista_relaciones.getPfirst();
+//        
+//        for (int i = 0; i < lista_usuarios.getSize(); i++) {
+//            String usuarioId = Integer.toString(auxUsuario.getID());
+//            String usuarioName = auxUsuario.getNombreDeUsuario();
+//            org.graphstream.graph.Node addNode = graph.addNode(usuarioId);
+//            addNode.setAttribute("ui.label", usuarioName);
+//            auxUsuario = auxUsuario.getSiguiente();
+//
+//        }
+//        try {
+//            for (int i = 0; i < lista_relaciones.getSize(); i++) {
+//            String tiempo = Integer.toString(auxRelaciones.getTiempo());
+//            String usuario1 = Integer.toString(auxRelaciones.getInicio());
+//            String usuario2 = Integer.toString(auxRelaciones.getFin());
+//            Edge addEdge = graph.addEdge(tiempo+usuario1+usuario2,usuario1 ,usuario2 );
+//            addEdge.setAttribute("ui.label", tiempo);
+//            auxRelaciones = auxRelaciones.getSiguiente();
+//        }
+//        graph.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "El grafo no es representable debido a una arista sobrescrita, elimine uno de sus vértices para ver la representación del grafo");
+//            return;
+//        }
+// 
+//        
+//          
+//        Viewer viewer = graph.display();
+//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+//        
+        
+    
+
+
         // TODO add your handling code here:
         if ((arb == null) && (hash_table == null)) {
             JOptionPane.showMessageDialog(null, "Para mostrar una base de conocimientos, primero debe cargar un archivo");
         } else {
-             treeGUI gui = new treeGUI(arb);
+             Representación gui = new Representación(arb);
              new VentanaCSV(hash_table, arb, csv).setVisible(true);
         }
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
@@ -301,6 +398,7 @@ public class VentanaCSV extends javax.swing.JFrame {
     private javax.swing.JButton guardarButton;
     private javax.swing.JButton guardarPorDefectoButton;
     private javax.swing.JButton inicializarButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mostrarBDCButton;
