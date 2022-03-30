@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.Normalizer;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -20,7 +21,7 @@ import javax.swing.JTextArea;
  */
 
 public class archivoCsv {
-    public String abrirArchivo(BinaryTree arb, HashTable hash_table){
+    public String abrirArchivo(ArbolBinario arb, HashTable hash_table){
         String aux="";   
         String texto="";
         try
@@ -53,6 +54,7 @@ public class archivoCsv {
                                 datos[j]=datos[j].replaceFirst(" ","");
                             }
                             datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
                         }
                         System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
@@ -68,6 +70,13 @@ public class archivoCsv {
                         }
                     }else{
                     String[] datos = txt_split[i].split(",");
+                    for (int j = 0; j < datos.length; j++) {
+                            if (datos[j].charAt(0)==espacio) {
+                                datos[j]=datos[j].replaceFirst(" ","");
+                            }
+                            datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
+                        }
                         if (i==0) {
                             
                         }
@@ -93,11 +102,13 @@ public class archivoCsv {
             lee.close();      
           }
          }
-         catch(IOException ex)
+         catch(Exception e)
          {
-           JOptionPane.showMessageDialog(null,ex+"" +
-                 "\nNo se ha encontrado el archivo",
+           JOptionPane.showMessageDialog(null, 
+                 "Archivo de texto inválido",
                        "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+           texto="";
+           return texto;
           } 
         return texto;
         
@@ -117,7 +128,7 @@ public class archivoCsv {
                save.write(cadena);
                save.close();
                JOptionPane.showMessageDialog(null,
-                    "El archivo se a guardado Exitosamente",
+                    "El archivo se ha guardado Exitosamente",
                         "Información",JOptionPane.INFORMATION_MESSAGE);
             }
                  }else if (guarda !=null){
@@ -132,7 +143,7 @@ public class archivoCsv {
          }
          
         }
-         catch(IOException ex)
+         catch(Exception e)
          {
           JOptionPane.showMessageDialog(null,
                "Su archivo no se ha guardado",
@@ -146,17 +157,17 @@ public class archivoCsv {
         save.write(cadena);
         save.close();
         JOptionPane.showMessageDialog(null,
-             "El archivo se a guardado Exitosamente",
+             "El archivo se ha guardado Exitosamente",
                  "Información",JOptionPane.INFORMATION_MESSAGE);
 
-     }catch(IOException ex)
+     }catch(Exception e)
          {
           JOptionPane.showMessageDialog(null,
                "Su archivo no se ha guardado",
                   "Advertencia",JOptionPane.WARNING_MESSAGE);
          }
 }
-     public void leerPorDefecto(BinaryTree arb, HashTable hash_table){
+     public void leerPorDefecto(ArbolBinario arb, HashTable hash_table){
          String aux="";   
         String texto="";
         try
@@ -179,6 +190,7 @@ public class archivoCsv {
                                 datos[j]=datos[j].replaceFirst(" ","");
                             }
                             datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
                         }
                         System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
@@ -194,6 +206,14 @@ public class archivoCsv {
                         }
                     }else{
                     String[] datos = txt_split[i].split(",");
+                    for (int j = 0; j < datos.length; j++) {
+                            if (datos[j].charAt(0)==espacio) {
+                                datos[j]=datos[j].replaceFirst(" ","");
+                            }
+                            datos[j]=datos[j].toLowerCase();
+                            datos[j]=quitar_acentos(datos[j]);
+                        }
+                        System.out.println(datos[0]+"+"+datos[1]+"+"+datos[2]);
                         if (i==0) {
                             
                         }
@@ -219,11 +239,30 @@ public class archivoCsv {
             lee.close();      
           JOptionPane.showMessageDialog(null, "Leido exitosamente");
      
-        }catch(IOException ex)
+        }catch(Exception e)
          {
-           JOptionPane.showMessageDialog(null,ex+"" +
-                 "\nNo se ha encontrado el archivo",
+           JOptionPane.showMessageDialog(null,
+                 "Archivo de texto inválido",
                        "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-          } 
+          }
+        
 }
+     
+     public static String quitar_acentos(String palabra) {
+        palabra = Normalizer.normalize(palabra, Normalizer.Form.NFD);
+        palabra = palabra.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return palabra;
+     }
+     
+     public static boolean validacion_animal(String animal){
+         if (animal==null) {
+             return true;
+         }
+         boolean es_numero= animal.matches("[+-]?\\d*(\\.\\d+)?");
+         if (es_numero || animal.isBlank() || animal.isEmpty() || animal==null) {
+            return true;
+        }
+         return false;
+     }
 }
+

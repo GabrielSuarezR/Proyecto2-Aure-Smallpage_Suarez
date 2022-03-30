@@ -13,15 +13,15 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
-    Node nodo = null;
+    Nodo_arbol nodo = null;
     boolean hoja = false;
     boolean si = false;
     boolean no = true;
-    public static BinaryTree arb;
+    public static ArbolBinario arb;
     public static HashTable hash_table;
     public static archivoCsv csv;
     
-    public VentanaAkinator(BinaryTree arb, HashTable hash_table) {
+    public VentanaAkinator(ArbolBinario arb, HashTable hash_table) {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -175,7 +175,15 @@ public class VentanaAkinator extends javax.swing.JFrame {
             boolean validacion1 = true;
             while (validacion1) {
                 String animal = JOptionPane.showInputDialog("¿Cual era tu animal?");
-                if (arb.find(arb.getRoot(), animal) != null){
+                boolean validar= archivoCsv.validacion_animal(animal);
+                while (validar) {                    
+                    JOptionPane.showMessageDialog(null, "Ingreso inválido. el animal no puede contener números ni estar vacío");
+                    animal = JOptionPane.showInputDialog("¿Cual era tu animal?");
+                    validar= archivoCsv.validacion_animal(animal);
+                }
+                animal=archivoCsv.quitar_acentos(animal);
+                animal=animal.toLowerCase();
+                if (hash_table.buscar(animal) != null){
                     JOptionPane.showMessageDialog(null, "Este animal se encuentra en la base de conocimientos, es posible que no hayas respondido de manera correcta alguna pregunta.");
                     yesButton.setEnabled(false);
                     noButton.setEnabled(false);
@@ -185,21 +193,24 @@ public class VentanaAkinator extends javax.swing.JFrame {
                     hoja = false;
                     validacion1 = false;
                     
-                }else if(animal.isBlank() | animal.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre de su animal.");
-                    validacion1 = true;
                 }else{
                     boolean validacion2 = true;
                     while (validacion2) {                        
                         String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                        while (diferencia==null || diferencia.isBlank() || diferencia.isEmpty() ) {                            
+                            JOptionPane.showMessageDialog(null, "Ingreso inválido, la diferencia no puede estar vacía");
+                            diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                        }
+                        diferencia=archivoCsv.quitar_acentos(diferencia);
+                        diferencia=diferencia.toLowerCase();
                         if (diferencia.isBlank() | diferencia.isEmpty()){
                             JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+animal+ " de un a un/una "  + nodo.get_info()+".");
                             validacion2 = true;
                         }else{
                             int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                             if (respuesta3==0) {
-                                Node animalviejo = new Node(nodo.get_info());
-                                Node animalnuevo = new Node(animal);
+                                Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
+                                Nodo_arbol animalnuevo = new Nodo_arbol(animal);
                                 nodo.Set_info(diferencia);
                                 nodo.Set_Right_child(animalnuevo);
                                 nodo.Set_Left_child(animalviejo);
@@ -213,8 +224,8 @@ public class VentanaAkinator extends javax.swing.JFrame {
                                 validacion1 = false;
                                 validacion2 = false;
                             }else{
-                                Node animalviejo = new Node(nodo.get_info());
-                                Node animalnuevo = new Node(animal);
+                                Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
+                                Nodo_arbol animalnuevo = new Nodo_arbol(animal);
                                 nodo.Set_info(diferencia);
                                 nodo.Set_Left_child(animalnuevo);
                                 nodo.Set_Right_child(animalviejo); 

@@ -17,14 +17,14 @@ import org.graphstream.ui.view.Viewer;
  */
 public class VentanaCSV extends javax.swing.JFrame {
     public static HashTable hash_table;
-    public static BinaryTree arb;
+    public static ArbolBinario arb;
     public static archivoCsv csv;
     
     
     /**
      * Creates new form VentanaCSV
      */
-    public VentanaCSV(HashTable hash_table, BinaryTree arb, archivoCsv csv) {
+    public VentanaCSV(HashTable hash_table, ArbolBinario arb, archivoCsv csv) {
         initComponents();
         this.hash_table= hash_table;
         this.csv = csv;
@@ -166,6 +166,8 @@ public class VentanaCSV extends javax.swing.JFrame {
             if (es_numero || cadena.isBlank() || cadena.isEmpty() || cadena==null) {
                 JOptionPane.showMessageDialog(null, "La cadena no puede ser numérica o estar vacía");
             }else{
+               cadena= archivoCsv.quitar_acentos(cadena);
+               cadena= cadena.toLowerCase();
                Nodo buscado= hash_table.buscar(cadena);
                 if (buscado==null) {
                     JOptionPane.showMessageDialog(null, "'"+cadena+"'"+" no se encuentra registado en la base de conocimientos");
@@ -181,10 +183,15 @@ public class VentanaCSV extends javax.swing.JFrame {
         if ((arb == null) && (hash_table == null) ) {
             
             this.csv = new archivoCsv();
-            this.arb = new BinaryTree();
+            this.arb = new ArbolBinario();
             this.hash_table= new HashTable(10111);
-            csv.abrirArchivo(arb, hash_table);
-            
+            String cadena=csv.abrirArchivo(arb, hash_table);
+            if (cadena.equals("")) {
+                arb=null;
+                hash_table=null;
+                return;
+            }
+            JOptionPane.showMessageDialog(null, "Lectura exitosa");
         } else {
             
             JOptionPane.showMessageDialog(null, "Ya existe un archivo cargado.\nSi desea cargar uno nuevo, presione 'Inicializar'.");
@@ -198,7 +205,7 @@ public class VentanaCSV extends javax.swing.JFrame {
         } else {
             arb = null;
             hash_table = null;
-            JOptionPane.showMessageDialog(null, "Su base de conocimeintos fue inicializada correctamente");
+            JOptionPane.showMessageDialog(null, "Su base de conocimientos fue inicializada correctamente");
         }
     }//GEN-LAST:event_inicializarButtonActionPerformed
 
@@ -215,6 +222,7 @@ public class VentanaCSV extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarButtonActionPerformed
 
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
+
 //        System.setProperty("org.graphstream.ui", "swing");
 //        Graph graph = new SingleGraph("Grafo");
 //        
@@ -251,6 +259,15 @@ public class VentanaCSV extends javax.swing.JFrame {
 //        
         
     
+
+
+        // TODO add your handling code here:
+        if ((arb == null) && (hash_table == null)) {
+            JOptionPane.showMessageDialog(null, "Para mostrar una base de conocimientos, primero debe cargar un archivo");
+        } else {
+             treeGUI gui = new treeGUI(arb);
+             new VentanaCSV(hash_table, arb, csv).setVisible(true);
+        }
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
 
     private void guardarPorDefectoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPorDefectoButtonActionPerformed
@@ -270,7 +287,7 @@ public class VentanaCSV extends javax.swing.JFrame {
         if ((arb == null) && (hash_table == null) ) {
             
             this.csv = new archivoCsv();
-            this.arb = new BinaryTree();
+            this.arb = new ArbolBinario();
             this.hash_table= new HashTable(10111);          
             csv.leerPorDefecto(arb, hash_table);
             
