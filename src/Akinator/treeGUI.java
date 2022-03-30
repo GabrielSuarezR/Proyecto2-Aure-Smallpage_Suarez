@@ -15,6 +15,8 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.Image;
+import java.awt.Scrollbar;
 
 public class treeGUI extends JFrame {
        	private JPanel contentPane;
@@ -27,14 +29,18 @@ public class treeGUI extends JFrame {
 	 */
 	public treeGUI(ArbolBinario tree) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 3000, 1800);
+		setBounds(0, 0, 1500, 900);
+                Scrollbar s  = new Scrollbar();
+                s.setBounds(100, 100, 10, 1800);
+                s.setOrientation(0);
+                
                
                 
-		contentPane = new JPanel(rootPaneCheckingEnabled);
+		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		drawer = new DrawTree(tree);
-		
+		contentPane.add(s);
 		contentPane.add(drawer);
                 this.setLayout(new BorderLayout());
                	setContentPane(contentPane);
