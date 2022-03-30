@@ -28,7 +28,7 @@ public class Representación extends JFrame {
 	 * Create the frame.
 	 */
 	public Representación(ArbolBinario tree) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 1500, 900);
                 Scrollbar s  = new Scrollbar();
                 s.setBounds(100, 100, 10, 1800);
@@ -39,13 +39,7 @@ public class Representación extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-<<<<<<< HEAD:src/Akinator/treeGUI.java
-		drawer = new DrawTree(tree);
-		contentPane.add(s);
-=======
 		drawer = new Dibujar_arbol(tree);
-		
->>>>>>> 660e83d23a19a3d19154cc1cb2ab206cc4e5d2a0:src/Akinator/Representación.java
 		contentPane.add(drawer);
                 this.setLayout(new BorderLayout());
                	setContentPane(contentPane);
