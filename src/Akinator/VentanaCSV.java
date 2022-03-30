@@ -6,6 +6,10 @@
 package Akinator;
 
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -211,7 +215,42 @@ public class VentanaCSV extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarButtonActionPerformed
 
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
-        // TODO add your handling code here:
+//        System.setProperty("org.graphstream.ui", "swing");
+//        Graph graph = new SingleGraph("Grafo");
+//        
+//        Node auxNodo = arb.getRoot();
+//        Nodo auxRelaciones = lista_relaciones.getPfirst();
+//        
+//        for (int i = 0; i < lista_usuarios.getSize(); i++) {
+//            String usuarioId = Integer.toString(auxUsuario.getID());
+//            String usuarioName = auxUsuario.getNombreDeUsuario();
+//            org.graphstream.graph.Node addNode = graph.addNode(usuarioId);
+//            addNode.setAttribute("ui.label", usuarioName);
+//            auxUsuario = auxUsuario.getSiguiente();
+//
+//        }
+//        try {
+//            for (int i = 0; i < lista_relaciones.getSize(); i++) {
+//            String tiempo = Integer.toString(auxRelaciones.getTiempo());
+//            String usuario1 = Integer.toString(auxRelaciones.getInicio());
+//            String usuario2 = Integer.toString(auxRelaciones.getFin());
+//            Edge addEdge = graph.addEdge(tiempo+usuario1+usuario2,usuario1 ,usuario2 );
+//            addEdge.setAttribute("ui.label", tiempo);
+//            auxRelaciones = auxRelaciones.getSiguiente();
+//        }
+//        graph.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "El grafo no es representable debido a una arista sobrescrita, elimine uno de sus vértices para ver la representación del grafo");
+//            return;
+//        }
+// 
+//        
+//          
+//        Viewer viewer = graph.display();
+//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+//        
+        
+    
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
 
     private void guardarPorDefectoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPorDefectoButtonActionPerformed
