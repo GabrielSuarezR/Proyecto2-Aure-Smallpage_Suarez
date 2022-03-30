@@ -50,13 +50,19 @@ public class VentanaAkinator extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        yesButton.setBackground(new java.awt.Color(255, 102, 0));
+        yesButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        yesButton.setForeground(new java.awt.Color(0, 0, 0));
         yesButton.setText("Si");
+        yesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        yesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         yesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonActionPerformed(evt);
@@ -64,7 +70,12 @@ public class VentanaAkinator extends javax.swing.JFrame {
         });
         jPanel1.add(yesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 170, 60));
 
+        noButton.setBackground(new java.awt.Color(255, 102, 0));
+        noButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        noButton.setForeground(new java.awt.Color(0, 0, 0));
         noButton.setText("No");
+        noButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        noButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         noButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonActionPerformed(evt);
@@ -72,7 +83,12 @@ public class VentanaAkinator extends javax.swing.JFrame {
         });
         jPanel1.add(noButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 170, 60));
 
+        comenzar.setBackground(new java.awt.Color(255, 102, 0));
+        comenzar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        comenzar.setForeground(new java.awt.Color(0, 0, 0));
         comenzar.setText("Comenzar Ronda");
+        comenzar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        comenzar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comenzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comenzarActionPerformed(evt);
@@ -83,36 +99,58 @@ public class VentanaAkinator extends javax.swing.JFrame {
         jScrollPane1.setViewportBorder(new javax.swing.border.MatteBorder(null));
 
         preguntas.setEditable(false);
+        preguntas.setBackground(new java.awt.Color(0, 0, 0));
         preguntas.setColumns(20);
-        preguntas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        preguntas.setFont(new java.awt.Font("Tempus Sans ITC", 0, 17)); // NOI18N
+        preguntas.setForeground(new java.awt.Color(204, 204, 204));
         preguntas.setRows(5);
+        preguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(preguntas);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 410, 150));
 
+        backButton.setBackground(new java.awt.Color(255, 102, 0));
+        backButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        backButton.setForeground(new java.awt.Color(0, 0, 0));
         backButton.setText("<<<");
+        backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 60, 30));
 
+        exitButton.setBackground(new java.awt.Color(255, 102, 0));
+        exitButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("x");
+        exitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+        jPanel1.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 30, 30));
 
+        helpButton.setBackground(new java.awt.Color(255, 102, 0));
+        helpButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        helpButton.setForeground(new java.awt.Color(0, 0, 0));
         helpButton.setText("Como Jugar");
+        helpButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        helpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         helpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpButtonActionPerformed(evt);
             }
         });
         jPanel1.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 110, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Akinator/fondoAkinator.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-820, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
@@ -196,7 +234,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
                 }else{
                     boolean validacion2 = true;
                     while (validacion2) {                        
-                        String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
+                        String diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+"'"+animal+"'"+" de un a un/una "  + nodo.get_info() + "?");
                         while (diferencia==null || diferencia.isBlank() || diferencia.isEmpty() ) {                            
                             JOptionPane.showMessageDialog(null, "Ingreso inválido, la diferencia no puede estar vacía");
                             diferencia = JOptionPane.showInputDialog("¿Qué diferencia a un/una "+animal+ " de un a un/una "  + nodo.get_info() + "?");
@@ -204,10 +242,10 @@ public class VentanaAkinator extends javax.swing.JFrame {
                         diferencia=archivoCsv.quitar_acentos(diferencia);
                         diferencia=diferencia.toLowerCase();
                         if (diferencia.isBlank() | diferencia.isEmpty()){
-                            JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+animal+ " de un a un/una "  + nodo.get_info()+".");
+                            JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+"'"+animal+"'"+ " de un a un/una "  + nodo.get_info()+".");
                             validacion2 = true;
                         }else{
-                            int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+ animal+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                            int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                             if (respuesta3==0) {
                                 Nodo_arbol animalviejo = new Nodo_arbol(nodo.get_info());
                                 Nodo_arbol animalnuevo = new Nodo_arbol(animal);
@@ -215,7 +253,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
                                 nodo.Set_Right_child(animalnuevo);
                                 nodo.Set_Left_child(animalviejo);
                                 hash_table.insertar(animal);
-                                JOptionPane.showMessageDialog(null, "            ¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                                JOptionPane.showMessageDialog(null, "            ¡Muchas gracias! Ahora Akinator es mucho más inteligente que antes."+"\n");
                                 yesButton.setEnabled(false);
                                 noButton.setEnabled(false);
                                 comenzar.setEnabled(true);
@@ -230,7 +268,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
                                 nodo.Set_Left_child(animalnuevo);
                                 nodo.Set_Right_child(animalviejo); 
                                 hash_table.insertar(animal);
-                                preguntas.append("            ¡Muchas gracias!, ahora soy mucho más inteligente que antes."+"\n");
+                                preguntas.append("            ¡Muchas gracias! Ahora Akinator es mucho más inteligente que antes."+"\n");
                                 yesButton.setEnabled(false);
                                 noButton.setEnabled(false);
                                 comenzar.setEnabled(true);
@@ -300,6 +338,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
     private javax.swing.JButton comenzar;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton helpButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noButton;

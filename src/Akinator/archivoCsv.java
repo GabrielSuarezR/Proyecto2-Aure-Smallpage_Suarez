@@ -237,7 +237,7 @@ public class archivoCsv {
                  hash_table.insertar(animales[i]);
              }
             lee.close();      
-          JOptionPane.showMessageDialog(null, "Leido exitosamente");
+          JOptionPane.showMessageDialog(null, "Archivo por defecto cargado exitosamente");
      
         }catch(Exception e)
          {
