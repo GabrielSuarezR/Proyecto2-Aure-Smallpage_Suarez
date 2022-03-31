@@ -321,7 +321,6 @@ public class VentanaCSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Para mostrar una base de conocimientos, primero debe cargar un archivo");
         } else {
              Representación gui = new Representación(arb);
-//             new VentanaCSV(hash_table, arb, csv).setVisible(true);
         }
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
 
