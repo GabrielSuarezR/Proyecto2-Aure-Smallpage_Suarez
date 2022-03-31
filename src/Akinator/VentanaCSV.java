@@ -6,13 +6,12 @@
 package Akinator;
 
 import javax.swing.JOptionPane;
-//import org.graphstream.graph.Edge;
-//import org.graphstream.graph.Graph;
-//import org.graphstream.graph.implementations.SingleGraph;
-//import org.graphstream.ui.view.Viewer;
 
 /**
- *
+ * Clase VentanaCSV
+ * Ventana con las opciones relacionadas a la inicializacion, carga y 
+ * guardado del archivo, consulta de animales en la base de conocimientos 
+ * y representacion grafica del arbol 
  * @author sebas
  */
 public class VentanaCSV extends javax.swing.JFrame {
@@ -24,6 +23,12 @@ public class VentanaCSV extends javax.swing.JFrame {
     /**
      * Creates new form VentanaCSV
      */
+    /**
+        * Constructor de VentanaCSV
+        * @param hash_table estructura de datos Hash Table
+        * @param arb estructura de datos Arbol Binario
+        * @param csv archivo csv
+        */
     public VentanaCSV(HashTable hash_table, ArbolBinario arb, archivoCsv csv) {
         initComponents();
         this.hash_table= hash_table;
@@ -199,16 +204,25 @@ public class VentanaCSV extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+        * Función backButtonActionPerformed
+        * Vuelve a la ventana principal del programa
+        */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
         new VentanaPrincipal(arb, csv, hash_table);
     }//GEN-LAST:event_backButtonActionPerformed
-
+    /**
+        * Función exitButtonActionPerformed
+        * Finaliza el programa
+        */
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
-
+    /**
+        * Función consultarAnimalButtonActionPerformed
+        * Consulta si un animal ingresado por el usuario existe en la base de conocimientos
+        */
     private void consultarAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAnimalButtonActionPerformed
         if ((arb == null) && (hash_table == null)) {
             
@@ -232,7 +246,10 @@ public class VentanaCSV extends javax.swing.JFrame {
             }       
         }   
     }//GEN-LAST:event_consultarAnimalButtonActionPerformed
-
+    /**
+        * Función cargarButtonActionPerformed
+        * Carga un archivo csv externo con la informacion para poder utilizar el programa
+        */
     private void cargarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarButtonActionPerformed
         
         if ((arb == null) && (hash_table == null) ) {
@@ -253,7 +270,10 @@ public class VentanaCSV extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_cargarButtonActionPerformed
-
+    /**
+        * Función inicializarButtonActionPerformed
+        * Vacia el arbol binario y el Hash Table
+        */
     private void inicializarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicializarButtonActionPerformed
     if (arb == null && hash_table == null) {
             JOptionPane.showMessageDialog(null, "Su base de conocimientos ya esta vacia.");
@@ -263,7 +283,10 @@ public class VentanaCSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Su base de conocimientos fue inicializada correctamente");
         }
     }//GEN-LAST:event_inicializarButtonActionPerformed
-
+    /**
+        * Función guardarButtonActionPerformed
+        * Guarda el archivo con la base de conocimientos de manera externa al programa
+        */
     private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
         archivoCsv csvAux = new archivoCsv();
         if ((arb == null) && (hash_table == null)) {
@@ -275,55 +298,23 @@ public class VentanaCSV extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_guardarButtonActionPerformed
-
+    /**
+        * Función mostrarBDCButtonActionPerformed
+        * Muestra la informacion de la base de conocimientos de manera grafica en forma de arbol
+        */
     private void mostrarBDCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBDCButtonActionPerformed
 
-//        System.setProperty("org.graphstream.ui", "swing");
-//        Graph graph = new SingleGraph("Grafo");
-//        
-//        Node auxNodo = arb.getRoot();
-//        Nodo auxRelaciones = lista_relaciones.getPfirst();
-//        
-//        for (int i = 0; i < lista_usuarios.getSize(); i++) {
-//            String usuarioId = Integer.toString(auxUsuario.getID());
-//            String usuarioName = auxUsuario.getNombreDeUsuario();
-//            org.graphstream.graph.Node addNode = graph.addNode(usuarioId);
-//            addNode.setAttribute("ui.label", usuarioName);
-//            auxUsuario = auxUsuario.getSiguiente();
-//
-//        }
-//        try {
-//            for (int i = 0; i < lista_relaciones.getSize(); i++) {
-//            String tiempo = Integer.toString(auxRelaciones.getTiempo());
-//            String usuario1 = Integer.toString(auxRelaciones.getInicio());
-//            String usuario2 = Integer.toString(auxRelaciones.getFin());
-//            Edge addEdge = graph.addEdge(tiempo+usuario1+usuario2,usuario1 ,usuario2 );
-//            addEdge.setAttribute("ui.label", tiempo);
-//            auxRelaciones = auxRelaciones.getSiguiente();
-//        }
-//        graph.setAttribute("ui.stylesheet", "graph { fill-color: orange; }");
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "El grafo no es representable debido a una arista sobrescrita, elimine uno de sus vértices para ver la representación del grafo");
-//            return;
-//        }
-// 
-//        
-//          
-//        Viewer viewer = graph.display();
-//        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
-//        
-        
-    
 
-
-        // TODO add your handling code here:
         if ((arb == null) && (hash_table == null)) {
             JOptionPane.showMessageDialog(null, "Para mostrar una base de conocimientos, primero debe cargar un archivo");
         } else {
              Representación gui = new Representación(arb);
         }
     }//GEN-LAST:event_mostrarBDCButtonActionPerformed
-
+    /**
+        * Función guardarPorDefectoButtonActionPerformed
+        * Guarda el archivo con la base de conocimientos de manera local en el programa 
+        */
     private void guardarPorDefectoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPorDefectoButtonActionPerformed
         
         archivoCsv csvAux = new archivoCsv();
@@ -335,7 +326,10 @@ public class VentanaCSV extends javax.swing.JFrame {
             csvAux.escribirCvsPorDefecto(cadena);
         }
     }//GEN-LAST:event_guardarPorDefectoButtonActionPerformed
-
+    /**
+        * Función cargarPorDefectoButtonActionPerformed
+        * Carga un archivo csv interno que se encuentra por defecto en el programa 
+        */
     private void cargarPorDefectoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarPorDefectoButtonActionPerformed
         
         if ((arb == null) && (hash_table == null) ) {

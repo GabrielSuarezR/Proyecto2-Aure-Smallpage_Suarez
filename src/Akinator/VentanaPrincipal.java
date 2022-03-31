@@ -10,7 +10,8 @@ import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase VentanaPrincipal 
+ * Ventana con las opciones para ir a la VentanaCSV y a la VentanaAkinator
  * @author sebas
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
@@ -20,7 +21,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static ArbolBinario arb;
     public static archivoCsv csv;
     public static HashTable hash_table;
-    
+    /**
+        * Constructor de VentanaPrincipal
+        * @param hash_table estructura de datos Hash Table
+        * @param arb estructura de datos Arbol Binario
+        * @param csv archivo csv
+        */
     public VentanaPrincipal(ArbolBinario arb,archivoCsv csv, HashTable hash_table) {
         initComponents();
         
@@ -112,7 +118,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+        * Función playButtonActionPerformed
+        * Permite moverse a la VentanaAkinator 
+        */
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         if (arb != null) {
             this.dispose();
@@ -121,12 +130,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Para jugar debe CARGAR o INICIALIZAR un archivo csv.\nPara hacerlo entre en 'BASE DE CONOCIMIENTOS'");
         }
     }//GEN-LAST:event_playButtonActionPerformed
-
+    /**
+        * Función dataBaseButtonActionPerformed
+        * Permite moverse a la VentanaCSV 
+        */
     private void dataBaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBaseButtonActionPerformed
         this.dispose();
         VentanaCSV ventanaCSV = new VentanaCSV(hash_table, arb, csv);
     }//GEN-LAST:event_dataBaseButtonActionPerformed
-
+    /**
+        * Función exitButtonActionPerformed
+        * Finaliza el programa 
+        */
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         int confirmacionSalir = JOptionPane.showConfirmDialog(null, "Deseas salir del juego?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
             if (confirmacionSalir == 0) {
