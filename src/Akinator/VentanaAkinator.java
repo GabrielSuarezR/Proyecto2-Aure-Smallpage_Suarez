@@ -254,10 +254,10 @@ public class VentanaAkinator extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "Por favor ingrese algo que diferencie a un/una "+"'"+animal+"'"+ " de un a un/una "  + nodo.getInfo()+".");
                             validacion2 = true;
                         }else{
-                            int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                            int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta: el "+animal+" "+diferencia+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                             while (respuesta3==-1) {                                
                                 JOptionPane.showMessageDialog(null, "Ingreso inválido, debe responder entre si o no");
-                                respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                                respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta: el "+animal+" "+diferencia+"?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
                             }
                             if (respuesta3==0) {
                                 Nodo animalviejo = new Nodo(nodo.getInfo());
@@ -266,7 +266,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
                                 nodo.setRight(animalnuevo);
                                 nodo.setLeft(animalviejo);
                                 hash_table.insertar(animal);
-                                JOptionPane.showMessageDialog(null, "            ¡Muchas gracias! Ahora Akinator es mucho más inteligente que antes."+"\n");
+                                preguntas.append( "Muchas gracias! Ahora Akinator es mucho más inteligente que antes."+"\n");
                                 yesButton.setEnabled(false);
                                 noButton.setEnabled(false);
                                 comenzar.setEnabled(true);
