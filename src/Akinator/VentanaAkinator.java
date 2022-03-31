@@ -255,6 +255,10 @@ public class VentanaAkinator extends javax.swing.JFrame {
                             validacion2 = true;
                         }else{
                             int respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                            while (respuesta3==-1) {                                
+                                JOptionPane.showMessageDialog(null, "Ingreso inválido, debe responder entre si o no");
+                                respuesta3 = JOptionPane.showConfirmDialog(null, "¿Si el animal fuese un/una "+"'"+animal+"'"+", cuál sería la respuesta a la pregunta?", "Respuesta", ConfirmationCallback.YES_NO_OPTION);
+                            }
                             if (respuesta3==0) {
                                 Nodo animalviejo = new Nodo(nodo.getInfo());
                                 Nodo animalnuevo = new Nodo(animal);
