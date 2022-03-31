@@ -6,7 +6,8 @@
 package Akinator;
 
 /**
- *
+ * Clase Main
+ * Se inicia el programa
  * @author sebas
  */
 

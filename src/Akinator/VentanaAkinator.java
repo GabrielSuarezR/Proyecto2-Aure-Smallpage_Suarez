@@ -9,7 +9,8 @@ import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase VentanaAkinator
+ * Ventana con las acciones relacionadas al juego de Akinator en si.
  * @author sebas
  */
 public class VentanaAkinator extends javax.swing.JFrame {
@@ -20,7 +21,12 @@ public class VentanaAkinator extends javax.swing.JFrame {
     public static ArbolBinario arb;
     public static HashTable hash_table;
     public static archivoCsv csv;
-    
+    /**
+        * Constructor de VentanaAkinator
+        * @param hash_table estructura de datos Hash Table
+        * @param arb estructura de datos Arbol Binario
+        * @param csv archivo csv
+        */
     public VentanaAkinator(ArbolBinario arb, HashTable hash_table) {
         initComponents();
         this.setVisible(true);
@@ -59,7 +65,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         yesButton.setBackground(new java.awt.Color(255, 102, 0));
         yesButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        yesButton.setForeground(new java.awt.Color(0, 0, 0));
         yesButton.setText("Si");
         yesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         yesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -72,7 +77,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         noButton.setBackground(new java.awt.Color(255, 102, 0));
         noButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        noButton.setForeground(new java.awt.Color(0, 0, 0));
         noButton.setText("No");
         noButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         noButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -85,7 +89,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         comenzar.setBackground(new java.awt.Color(255, 102, 0));
         comenzar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        comenzar.setForeground(new java.awt.Color(0, 0, 0));
         comenzar.setText("Comenzar Ronda");
         comenzar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         comenzar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -111,7 +114,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         backButton.setBackground(new java.awt.Color(255, 102, 0));
         backButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        backButton.setForeground(new java.awt.Color(0, 0, 0));
         backButton.setText("<<<");
         backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -124,7 +126,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         exitButton.setBackground(new java.awt.Color(255, 102, 0));
         exitButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("x");
         exitButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -137,7 +138,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         helpButton.setBackground(new java.awt.Color(255, 102, 0));
         helpButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        helpButton.setForeground(new java.awt.Color(0, 0, 0));
         helpButton.setText("Como Jugar");
         helpButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         helpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,13 +150,16 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Akinator/fondoAkinator.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-820, 0, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-820, -10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+        * Función comenzarActionPerformed
+        * Comienza una ronda del juego
+        */
     private void comenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarActionPerformed
         nodo = arb.getRoot();
         if (!arb.its_empty(arb.getRoot())) {
@@ -173,7 +176,10 @@ public class VentanaAkinator extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_comenzarActionPerformed
-
+    /**
+        * Función yesButtonActionPerformed
+        * Permite al usuario responder con un 'Si' a las preguntas del juego
+        */
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         preguntas.append("\n                Respuesta: Si\n\n");    
         if (hoja != true) {                
@@ -196,7 +202,10 @@ public class VentanaAkinator extends javax.swing.JFrame {
                     }
             
     }//GEN-LAST:event_yesButtonActionPerformed
-
+    /**
+        * Función noButtonActionPerformed
+        * Permite al usuario responder con un 'No' a las preguntas del juego
+        */
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         preguntas.append("\n                Respuesta: No\n\n");
         if (hoja != true) {                
@@ -283,16 +292,25 @@ public class VentanaAkinator extends javax.swing.JFrame {
             }            
         }
     }//GEN-LAST:event_noButtonActionPerformed
-
+    /**
+     * exitButtonActionPerformed
+     * Finaliza del programa 
+     */
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
-
+    /**
+     * backButtonActionPerformed
+     * Vuelve a la ventana principal del programaa 
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
         new VentanaPrincipal(arb, csv, hash_table);
     }//GEN-LAST:event_backButtonActionPerformed
-
+    /**
+        * Función helpButtonActionPerformed
+        * Muestra al usuario un tutorial de como se juega
+        */
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         JOptionPane.showMessageDialog(null, "                                      REGLAS DEL JUEGO\n\n Antes  de  empezar a jugar  debes  pensar  en  un  animal y  Akinator\n intentara adivinarlo a traves de distintas preguntas a las que podras\n responder  'Si'  o  'No'.  Si  Akinator  logra  adivinar  el  animal   en   el\n que  estabas  pensando,  el  habra ganado el juego,  de  lo  contrario,\n tu habras sido el ganador.\n Para iniciar una partida presiona 'Comenzar Ronda'.\n\n                                      QUE TE DIVIERTAS!");
     }//GEN-LAST:event_helpButtonActionPerformed
