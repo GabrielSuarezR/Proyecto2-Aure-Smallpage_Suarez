@@ -138,7 +138,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         helpButton.setBackground(new java.awt.Color(255, 102, 0));
         helpButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        helpButton.setText("Como Jugar");
+        helpButton.setText("Cómo Jugar");
         helpButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         helpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         helpButton.addActionListener(new java.awt.event.ActionListener() {

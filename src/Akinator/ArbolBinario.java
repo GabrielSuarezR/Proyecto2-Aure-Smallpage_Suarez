@@ -6,12 +6,6 @@
 package Akinator;
 
 import javax.swing.JOptionPane;
-//import javax.swing.text.html.StyleSheet;
-//import org.graphstream.graph.Edge;
-//import org.graphstream.graph.Graph;
-//import org.graphstream.graph.Node;
-//import org.graphstream.graph.implementations.SingleGraph;
-//import org.graphstream.ui.view.Viewer;
 
 /**
  * Clase ArbolBinario
@@ -112,10 +106,10 @@ public class ArbolBinario {
         
         /**
          * Funcion archivorder
-        * Guarda la informacion cargada en el archivo por defecto 
-        * @param n: 
-        * @param cadena: 
-        * @return "String" 
+        * Crea un String con la informacion ordenada corretamente para ser guardada en el archivo por defecto.
+        * @param n: nodo que va a recorrer para agarrar ambos hijos y escribir los 3 nodos en el String.
+        * @param cadena: cadena en la que se va a guardar el string del archivo, de forma que se vpuedo volver a leer.
+        * @return "String" retorna la cadena
         */
 	
         public String archivorder(Nodo n,String cadena){

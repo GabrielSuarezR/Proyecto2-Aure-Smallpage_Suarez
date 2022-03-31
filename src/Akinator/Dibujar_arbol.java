@@ -26,7 +26,11 @@ import javax.swing.JPanel;
 class Dibujar_arbol extends JPanel{
 	
 	public ArbolBinario tree;
-	
+	/**
+         * Funcion dibujar_arbol
+         * Llama a la funcion dibujar pasandole los parametros necesarios.
+         * @param tree pasa como parametro un arbol que se quiera representar.
+         */
 	public Dibujar_arbol(ArbolBinario tree){
 		this.tree = tree;
 	}
@@ -44,7 +48,17 @@ class Dibujar_arbol extends JPanel{
 		Dibujar(g, 0, getWidth(), 0, getHeight() / tree.getheight(tree.getRoot()), tree.getRoot());
 	}
 
-	
+/**
+ * Funcion Dibujar
+ * Evalua cada nodo del arbol, generando su posicion en la ventana segun su nivel y dibujandolo segun los parametros que se le pasen 
+ * para poder visualizar m[as facil el arbol.
+ * @param g graficas de la representacion
+ * @param StartWidth es la posicion mas a la izquierda de la ventana para representar el arbol
+ * @param EndWidth posicion mas a la derecha de la ventana donde se representa el arbol
+ * @param StartHeight altura donde se va a representar el nodo
+ * @param Level nivel del arbol donde se encuentra el nodo
+ * @param nodo nodo que se esta evaluando para ser representado
+ */
     public void Dibujar(Graphics g, int StartWidth, int EndWidth, int StartHeight, int Level, Nodo nodo) {
         String data = String.valueOf(nodo.getInfo());
         g.setFont(new Font("Tahoma", Font.BOLD, 7));

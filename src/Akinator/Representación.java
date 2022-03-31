@@ -24,9 +24,12 @@ public class Representación extends JFrame {
 	public Dibujar_arbol drawer;
          
 	
-	/**
-	 * Create the frame.
-	 */
+/**
+ * Funcion Representacion
+ * se crea un JFrame con ciertos limites, donde se va a dibujar el arbol, al cual se llama la funcion dibujar_arbol, que con un drawer 
+ * se representa graficamente.
+ * @param tree arbol que se quiere representar
+ */
 	public Representación(ArbolBinario tree) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 1500, 900);

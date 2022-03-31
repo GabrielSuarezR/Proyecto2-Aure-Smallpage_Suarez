@@ -21,6 +21,14 @@ import javax.swing.JTextArea;
  */
 
 public class archivoCsv {
+    /**
+     * Funcion abrirArchivo
+     * Funcion que te abre los directorios de la computadora para que puedas recorrerlos y buscar el archivo que desees abrir,
+     * siempre que sea valido
+     * @param arb arbol base que se le van a pasar los datos del archivo
+     * @param hash_table tabla hash base que se le van a pasar la informacion del archivo
+     * @return 
+     */
     public String abrirArchivo(ArbolBinario arb, HashTable hash_table){
         String aux="";   
         String texto="";
@@ -107,10 +115,14 @@ public class archivoCsv {
                        "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
            texto="";
            return texto;
-          } 
-        return texto;
-        
+          } return texto;
         }  
+    /**
+     * Funcion guardarArchivo
+     * funcion que se la pasa un String que va a ser guardado en el archivo seleccionado por el mismo
+     * recorrido por directorios
+     * @param cadena String que contiene la informacion a ser guardada
+     */
      public void guardarArchivo(String cadena){
         try
         {
@@ -148,6 +160,12 @@ public class archivoCsv {
                   "Advertencia",JOptionPane.WARNING_MESSAGE);
          }
      }
+     /**
+      * Funcion escribirCvsPorDefecto
+      * Guarda los cambios hechos en el programa en el Csv incluido por defecto, sin necesidad
+      * de buscar un archivo.
+      * @param cadena  String que contiene la informacion a ser guardada
+      */
      public void escribirCvsPorDefecto(String cadena){
          try
         {
@@ -165,6 +183,13 @@ public class archivoCsv {
                   "Advertencia",JOptionPane.WARNING_MESSAGE);
          }
 }
+     /**
+      * Funcion leerPorDefecto
+      * Funcion que llena el arbol y la tabla hash base con la informacion del Csv incluido por
+      * defecto en el programa sin necesidad de buscar un archivo externo.
+      * @param arb arbol base que se va a crear con la inforamcion del Csv
+      * @param hash_table tabla hash que se va a lleanr con la informacion del Csv por defecto
+      */
      public void leerPorDefecto(ArbolBinario arb, HashTable hash_table){
          String aux="";   
         String texto="";
@@ -242,13 +267,24 @@ public class archivoCsv {
           }
         
 }
-     
+     /**
+      * Funcion quitar_acentos
+      * funcionq que recorre el String para quitar acentos y caracteres varios que no se leen por defecto
+      * para evitar la representacion de palabras incomprensibles.
+      * @param palabra String que se le pasa para evaluar cada letra
+      * @return retorna el mismo String pero con caracteres sin acentos.
+      */
      public static String quitar_acentos(String palabra) {
         palabra = Normalizer.normalize(palabra, Normalizer.Form.NFD);
         palabra = palabra.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         return palabra;
      }
-     
+     /**
+      * Funcion validacion_animal
+      * valida que el animal insertado no sea vacio, numerico o alguna insercion incompredible.
+      * @param animal String del animal nuevo
+      * @return retorna si el String es valido o no.
+      */
      public static boolean validacion_animal(String animal){
          if (animal==null) {
              return true;
